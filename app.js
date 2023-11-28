@@ -108,7 +108,7 @@ function map(val, minA, maxA, minB, maxB) {
     return minB + ((val - minA) * (maxB - minB)) / (maxA - minA);
 }
 
-window.addEventListener("deviceorientation", handleOrientation, true);
+window.addEventListener("deviceorientation", handleOrientation, false);
 
 function handleOrientation(event) {
     const absolute = event.absolute;
@@ -122,7 +122,7 @@ function handleOrientation(event) {
     document.querySelector('.gamma').innerHTML = gamma 
 
     // Rotate Ticket
-    ticket.style.transform = `perspective(600px) rotateX(${-alpha}deg) rotateY(${0}deg)`;
+    ticket.style.transform = `perspective(600px) rotateX(${alpha}deg) rotateY(${0}deg)`;
 
 }
  
