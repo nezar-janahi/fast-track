@@ -1,0 +1,237 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+html, body {
+    background:#eeeeee;
+    font-family: canada-type-gibson, sans-serif;
+    font-style: normal;
+    font-size: 14px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: 600;
+}
+
+.orientation {
+    position: absolute;
+    top:0;
+    right:0;
+    background:rgba(0,0,0,0.4)
+}
+
+h1 {
+    font-size: 3em;
+}
+
+.container {
+    margin:0 auto;
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+}
+
+.text-bold {
+    font-weight:600;
+}
+
+/* 
+ * Ticket *  
+*/
+
+.ticketHolder {
+    margin:2em 0 1em 0;
+    width:380px;
+    height:auto;
+}
+
+.ticket {
+    position: relative;
+    width:380px;
+    height:380px;
+    filter: drop-shadow(0px 167px 67px rgba(0, 0, 0, 0.01)) 
+            drop-shadow(0px 94px 56px rgba(0, 0, 0, 0.05)) 
+            drop-shadow(0px 42px 42px rgba(0, 0, 0, 0.09)) 
+            drop-shadow(0px 10px 23px rgba(0, 0, 0, 0.1));
+    border-radius: 8px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.ticket .top {
+    padding:2em;
+}
+
+.ticket .ticketNumber {
+    font-size: 3.4em;
+    flex-grow: 1;
+}
+
+.ticket img {
+    border:1px solid #E6E1E5;
+    margin-bottom:0.5em;
+    width:44px;
+    height:44px;
+}
+
+.ticket .shiny, 
+.ticket .spotlight, 
+.ticket .base {
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    clip-path: path("M0 8.00001C0 3.58173 3.58172 0 8 0H372C376.418 0 380 3.58172 380 8V178C373.373 178 368 183.373 368 190C368 196.627 373.373 202 380 202V372C380 376.418 376.418 380 372 380H8.00001C3.58173 380 0 376.418 0 372V202C6.62742 202 12 196.627 12 190C12 183.373 6.62742 178 0 178V8.00001Z");
+    /*clip-path: path('M0 0H380V151C373.373 151 368 156.373 368 163C368 169.627 373.373 175 380 175V316H0V175C6.62742 175 12 169.627 12 163C12 156.373 6.62742 151 0 151V0Z')*/
+}
+
+.ticket .content {
+    z-index: 10 !important;
+    display: flex;
+    flex-direction: column;
+    height:100%;
+}
+
+.ticket .spotlight {
+    opacity:0; /* easier than removing */
+    mix-blend-mode: hard-light;
+    z-index: 2;
+}
+
+.ticket .shiny {
+    /*mix-blend-mode: color;*/
+    z-index: -2
+}
+
+.ticket .base {
+    background-size: cover;
+    z-index:-1;
+}
+
+.ticket .border {
+    background: url("cardWithBorder.svg");
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index: 10;
+}
+
+.ticket .info {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:1em 2em;
+}
+
+.ticket .status {
+    text-align: left;
+}
+
+.ticket .booked {
+   text-align: right;
+}
+
+.ticket .footer {
+    border-top: 2px dashed rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    padding:1em 2em 2em 2em;
+    background:white;
+}
+
+.ticket .time-left {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ticket .progressbar {
+    width:100%;
+    height:8px;
+    border-radius: 8px;
+    margin-top:4px;
+    background:#D9D9D9;
+    overflow: hidden;
+}
+
+.ticket .progressbar .fill {
+    background:#F16460;
+    width:75%;
+    height:100%;
+}
+
+/* 
+ * Form *  
+*/
+
+form {
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+.tab {
+    display:flex;
+    flex-direction: row;
+    border-bottom:1px solid rgba(0,0,0,0.2)
+}
+
+.tab .item {
+    flex-basis: 33.33%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding:1em;
+    border-bottom:4px solid transparent;
+    font-size: 12px;
+}
+
+.tab .item img {
+    width:40px;
+    height:40px;
+    margin-bottom:8px
+}
+
+.tab .item.active {
+    border-bottom:2px solid #212121
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.list .item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:1px solid rgba(0,0,0,0.2);
+    padding: 1em;
+}
+
+.button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 24px;
+    border-radius: 80px;
+    font-weight: 600;
+    color:white;
+    text-transform: uppercase;
+}
+
+.button.fastTrack {
+    background: #67C381;
+    box-shadow: 0px 12px 5px rgba(103, 195, 129, 0.04), 0px 7px 4px rgba(103, 195, 129, 0.12), 0px 3px 3px rgba(103, 195, 129, 0.2), 0px 1px 2px rgba(103, 195, 129, 0.24), 0px 0px 0px rgba(103, 195, 129, 0.24);
+}
+
+.button.primary {
+    background: #4141D6;
+    box-shadow: 0px 12px 5px rgba(65, 65, 214, 0.04), 0px 7px 4px rgba(65, 65, 214, 0.12), 0px 3px 3px rgba(65, 65, 214, 0.2), 0px 1px 2px rgba(65, 65, 214, 0.24), 0px 0px 0px rgba(65, 65, 214, 0.24);
+}

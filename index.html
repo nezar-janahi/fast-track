@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.typekit.net/rsn5ibu.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Skiplino Iridescent Ticket</title>
+</head>
+<body>
+
+    <div class="orientation">
+        <p>Alpha: <span class="alpha">0</span></p>    
+        <p>Beta: <span class="beta">0</span></p>    
+        <p>Gamma: <span class="gamma">0</span></p>    
+    </div>
+        <form>
+            <label for="gradientSelect">Select Type</label>
+            <select id="gradientSelect">
+                    <option value="default">No Gradient</option>
+                    <option value="version1">Iridescent Background</option>
+                    <option value="version2">Gold Ticket Number</option>
+            </select>
+        </form>
+
+        <div class="container">
+
+            <div class="ticketHolder">
+                <div class="ticket">
+                    <div class="content">
+                        <div class="top">
+                            <img src="img/stc.jpeg">
+                            <p>Ministry of Education - وزارة التربيه و التعليم </p>
+                            <p class="text-bold">Customer Service Center</p>
+                            <p>New Student Registration Inquiry</p>    
+                        </div>
+                        <h1 class="ticketNumber">MSS 057</h1>
+                        <div class="info">
+                            <div class="status">
+                                <small>Status</small>
+                                <p class="text-bold">Waiting</p>
+                            </div>
+                            <div class="booked">
+                                <small>Booked For</small>
+                                <p class="text-bold">1:22pm, Today</p>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <div class="time-left">
+                                <p>Time Left</p>
+                                <p class="countdown"></p>    
+                            </div>
+                            <div class="progressbar">
+                                <div class="fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spotlight"></div>
+                    <div class="shiny"></div>
+                    <div class="border"></div>
+                    <div class="base"></div>
+                </div>
+            </div>
+    
+            <div class="tab">
+                <div class="item active">
+                    <img src="img/icon/clock.svg">
+                    <p>Update Time</p>
+                </div>
+                <div class="item">
+                    <img src="img/icon/map.svg">
+                    <p>Map</p>
+                </div>
+                <div class="item">
+                    <img src="img/icon/cancel.svg">
+                    <p>Cancel Ticket</p>
+                </div>
+            </div>
+
+            <div class="list">    
+            </div>
+
+        </div>
+    
+
+
+    <script src="app.js"></script>
+</body>
+</html>
