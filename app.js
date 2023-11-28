@@ -128,12 +128,82 @@ function handleOrientation(event) {
         beta = -45;
     }
     
+    /*
     if(beta < 60 || beta < 10) {
         beta = 0;
-    }
+    }*/
 
     // Rotate Ticket
     ticket.style.transform = `perspective(600px) rotateX(${beta}deg) rotateY(${gamma}deg)`;
+
+    switch(onChange()) {
+    
+        case 'version2':
+            border.style.opacity = 0;
+
+            info.style.padding = '1em 1em'
+
+            progressBarContainer.style.background = "rgba(0,0,0,0.1)"
+            progressBarFill.style.background = "#F16460"
+    
+            shiny.style.background = '#F8F6F0';
+
+            ticket.style.color = `black`
+            ticket.style.textShadow = `0px 0px transparent`;
+
+            ticketFooter.style.borderTop = `2px dashed rgba(0,0,0,0.2)`;
+            ticketFooter.style.padding = "1em 1em"
+
+            ticketNumber.style = `
+            text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+            background: 
+                radial-gradient(ellipse farthest-corner at right bottom, 
+                    hsl(49, 99%, ${61 + gamma / 2 + "%"}) ${0 + beta / 2 + "%"}, 
+                    hsl(40, 98%, ${59 + gamma / 2 + "%"}) ${8 + beta / 2 + "%"}, 
+                    hsl(41, 60%, ${39 + gamma / 2 + "%"}) ${30 + beta / 2 + "%"}, 
+                    hsl(42, 49%, ${36 + gamma / 2 + "%"}) ${40 + beta / 2 + "%"}, 
+                    transparent ${80 + gamma / 2 + "%"}),
+                radial-gradient(ellipse farthest-corner at left top, 
+                    hsl(0, 0%, ${100 + gamma / 2 + "%"}) ${0 + beta / 2 + "%"}, 
+                    hsl(60, 100%, ${84 + gamma / 2 + "%"}) ${8 + beta / 2 + "%"}, 
+                    hsl(44, 54%, ${61 + gamma / 2 + "%"}) ${25 + beta / 2 + "%"}, 
+                    hsl(42, 50%, ${24 + gamma / 2 + "%"}) ${62.5 + beta / 2 + "%"}, 
+                    hsl(42, 50%, ${24 + gamma / 2 + "%"}) ${100 + beta / 2 + "%"});
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;`;        
+            break;
+
+      case 'version1':
+        info.style.padding = '1em 2em'
+
+        border.style.opacity = 1
+        progressBarContainer.style.background = "rgba(0,0,0,0.2)"
+        progressBarFill.style.background = "white"
+        ticketFooter.style = `background:transparent;border:1px solid transparent`
+        ticket.style.color = 'white'
+        ticket.style.textShadow = '0px 2px 0px rgba(0, 0, 0, 0.1)';
+        shiny.style = `
+            background: linear-gradient(252.25deg, 
+                hsl(${222 + (gamma / 2)}, 85%, 30%) ${0 + beta / 2 + "%"}, 
+                hsl(${239 + (gamma / 2)}, 88%, 30%) ${39.52 + beta / 2 + "%"}, 
+                hsl(${0 + (gamma / 2)}, 0%, 30%) ${62.11 + beta / 2 + "%"}, 
+                hsl(${290 + (gamma / 2)}, 88%, 30%) ${74.53 + beta / 2 + "%"}, 
+                hsl(${237 + (gamma / 2)}, 86%, 30%) ${86.95 + beta / 2 + "%"}, 
+                hsl(${227 + (gamma / 2)}, 89%, 30%) ${99.38 + beta / 2 + "%"}, 
+                hsl(${204 + (mogammaseY / 2)}, 52%, 30%) ${119.7 + beta / 2 + "%"}, 
+                hsl(${0 + (gamma / 2)}, 0%, 30%) ${138.9 + beta / 2 + "%"});`
+        ticketNumber.style = `text-shadow: 0;background: transparentcolor:black;`     
+        break;
+
+        case 'default': 
+            border.style.opacity = 0
+
+            shiny.style.background = 'white';
+            ticket.style.color = `black`;
+            ticketNumber.style = `text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);`
+            ticket.style.textShadow = `0px 0px transparent`;
+            break;
+    } 
 
 }
  
