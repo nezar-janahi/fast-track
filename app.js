@@ -134,7 +134,7 @@ function handleOrientation(event) {
     
 
     // Rotate Ticket
-    ticket.style.transform = `perspective(600px) rotateX(${beta}deg) rotateY(${gamma}deg)`;
+    ticket.style.transform = `perspective(600px) rotateX(${-beta}deg) rotateY(${gamma}deg)`;
 
 }
  
