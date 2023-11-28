@@ -122,7 +122,7 @@ function handleOrientation(event) {
     document.querySelector('.gamma').innerHTML = gamma 
 
     // Rotate Ticket
-    ticket.style.transform = `perspective(600px) rotateX(${0}deg) rotateY(${alpha}deg)`;
+    ticket.style.transform = `perspective(600px) rotateX(${0}deg) rotateY(${gamma}deg)`;
 
 }
  
