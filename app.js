@@ -1,3 +1,16 @@
+   // Get queries
+   let ticketHolder = document.querySelector('.ticketHolder')
+   let ticket = document.querySelector('.ticket');
+   let shiny = document.querySelector('.shiny');
+   let spotlight = document.querySelector('.spotlight');
+   let ticketNumber = document.querySelector('.ticketNumber');
+   let ticketFooter = document.querySelector('.footer');
+   let progressBarContainer = document.querySelector('.progressbar');
+   let progressBarFill = document.querySelector('.fill');
+   let border = document.querySelector('.border');
+   let info = document.querySelector('.info')
+ 
+ 
  /* Time List */
  let updateTimeList = [
     {
@@ -39,8 +52,6 @@ updateTimeList.map((e) => {
 
 
 
-let ticketHolder = document.querySelector('.ticketHolder')
-let ticket = document.querySelector('.ticket');
 
 // Get Gradient Value
 var e = document.getElementById("gradientSelect");
@@ -105,23 +116,18 @@ function handleOrientation(event) {
     const beta = event.beta;
     const gamma = event.gamma;
 
+    // Test
     document.querySelector('.alpha').innerHTML = alpha 
     document.querySelector('.beta').innerHTML = beta 
     document.querySelector('.gamma').innerHTML = gamma 
+
+    // Rotate Ticket
+    ticket.style.transform = `perspective(600px) rotateX(${0}deg) rotateY(${alpha}deg)`;
+
 }
  
 
 function controlCard(e) {
-    // Get queries
-    let ticket = document.querySelector('.ticket');
-    let shiny = document.querySelector('.shiny');
-    let spotlight = document.querySelector('.spotlight');
-    let ticketNumber = document.querySelector('.ticketNumber');
-    let ticketFooter = document.querySelector('.footer');
-    let progressBarContainer = document.querySelector('.progressbar');
-    let progressBarFill = document.querySelector('.fill');
-    let border = document.querySelector('.border');
-    let info = document.querySelector('.info')
 
 
     // Find the pointer
