@@ -131,10 +131,9 @@ function handleOrientation(event) {
     if(beta < 60 || beta < 10) {
         beta = 0;
     }
-    
 
     // Rotate Ticket
-    ticket.style.transform = `perspective(600px) rotateX(${-beta}deg) rotateY(${gamma}deg)`;
+    ticket.style.transform = `perspective(600px) rotateX(${beta}deg) rotateY(${gamma}deg)`;
 
 }
  
