@@ -122,11 +122,15 @@ function handleOrientation(event) {
     document.querySelector('.gamma').innerHTML = gamma 
 
     // limit beta
-        if(beta > 45) {
-            beta = 45
-        } else if(beta < -45) {
-            beta = -45;
-        }
+    if(beta > 45) {
+        beta = 45
+    } else if(beta < -45) {
+        beta = -45;
+    }
+    
+    if(beta < 60 || beta < 10) {
+        beta = 0;
+    }
     
 
     // Rotate Ticket
