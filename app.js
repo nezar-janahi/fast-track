@@ -127,11 +127,17 @@ function handleOrientation(event) {
     } else if(beta < -45) {
         beta = -45;
     }
-    
-    /*
-    if(beta < 60 || beta < 10) {
-        beta = 0;
-    }*/
+
+
+    var y = event.gamma; // In degree in the range [-90,90]
+    console.log("gamma: " + y + "\n");
+    //value on gama is [-90, 90] => but we want to have between [0, 180], to be possiblle to compute 100% of 180
+    y += 90;
+    let gammaPercentage = ((gamma * 100) / 270).toFixed(0);
+    console.log("gamma percent: " + gammaPercentage + "\n");
+
+
+
 
     // Rotate Ticket
     ticket.style.transform = `perspective(600px) rotateX(${beta}deg) rotateY(${gamma}deg)`;
@@ -158,17 +164,17 @@ function handleOrientation(event) {
             text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
             background: 
                 radial-gradient(ellipse farthest-corner at right bottom, 
-                    hsl(49, 99%, ${61 + gamma / 2 + "%"}) ${0 + beta / 2 + "%"}, 
-                    hsl(40, 98%, ${59 + gamma / 2 + "%"}) ${8 + beta / 2 + "%"}, 
-                    hsl(41, 60%, ${39 + gamma / 2 + "%"}) ${30 + beta / 2 + "%"}, 
-                    hsl(42, 49%, ${36 + gamma / 2 + "%"}) ${40 + beta / 2 + "%"}, 
-                    transparent ${80 + gamma / 2 + "%"}),
+                    hsl(49, 99%, ${61 + gammaPercentage + "%"}) ${0 + beta / 2 + "%"}, 
+                    hsl(40, 98%, ${59 + gammaPercentage + "%"}) ${8 + beta / 2 + "%"}, 
+                    hsl(41, 60%, ${39 + gammaPercentage + "%"}) ${30 + beta / 2 + "%"}, 
+                    hsl(42, 49%, ${36 + gammaPercentage + "%"}) ${40 + beta / 2 + "%"}, 
+                    transparent ${80 + gammaPercentage + "%"}),
                 radial-gradient(ellipse farthest-corner at left top, 
-                    hsl(0, 0%, ${100 + gamma / 2 + "%"}) ${0 + beta / 2 + "%"}, 
-                    hsl(60, 100%, ${84 + gamma / 2 + "%"}) ${8 + beta / 2 + "%"}, 
-                    hsl(44, 54%, ${61 + gamma / 2 + "%"}) ${25 + beta / 2 + "%"}, 
-                    hsl(42, 50%, ${24 + gamma / 2 + "%"}) ${62.5 + beta / 2 + "%"}, 
-                    hsl(42, 50%, ${24 + gamma / 2 + "%"}) ${100 + beta / 2 + "%"});
+                    hsl(0, 0%, ${100 + gammaPercentage  + "%"}) ${0 + beta / 2 + "%"}, 
+                    hsl(60, 100%, ${84 + gammaPercentage  + "%"}) ${8 + beta / 2 + "%"}, 
+                    hsl(44, 54%, ${61 + gammaPercentage  + "%"}) ${25 + beta / 2 + "%"}, 
+                    hsl(42, 50%, ${24 + gammaPercentage  + "%"}) ${62.5 + beta / 2 + "%"}, 
+                    hsl(42, 50%, ${24 + gammaPercentage  + "%"}) ${100 + beta / 2 + "%"});
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;`;        
             break;
@@ -190,9 +196,9 @@ function handleOrientation(event) {
                 hsl(${290 + (gamma / 2)}, 88%, 30%) ${74.53 + beta / 2 + "%"}, 
                 hsl(${237 + (gamma / 2)}, 86%, 30%) ${86.95 + beta / 2 + "%"}, 
                 hsl(${227 + (gamma / 2)}, 89%, 30%) ${99.38 + beta / 2 + "%"}, 
-                hsl(${204 + (mogammaseY / 2)}, 52%, 30%) ${119.7 + beta / 2 + "%"}, 
+                hsl(${204 + (gamma / 2)}, 52%, 30%) ${119.7 + beta / 2 + "%"}, 
                 hsl(${0 + (gamma / 2)}, 0%, 30%) ${138.9 + beta / 2 + "%"});`
-        ticketNumber.style = `text-shadow: 0;background: transparentcolor:black;`     
+        ticketNumber.style = `text-shadow: 0;background: transparent; color:white;`     
         break;
 
         case 'default': 
@@ -209,7 +215,6 @@ function handleOrientation(event) {
  
 
 function controlCard(e) {
-
 
     // Find the pointer
     let mouseX = e.offsetX; 
