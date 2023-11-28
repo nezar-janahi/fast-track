@@ -121,8 +121,16 @@ function handleOrientation(event) {
     document.querySelector('.beta').innerHTML = beta 
     document.querySelector('.gamma').innerHTML = gamma 
 
+    // limit beta
+        if(beta > 45) {
+            beta = 45
+        } else if(beta < -45) {
+            beta = -45;
+        }
+    
+
     // Rotate Ticket
-    ticket.style.transform = `perspective(600px) rotateX(${alpha}deg) rotateY(${gamma}deg)`;
+    ticket.style.transform = `perspective(600px) rotateX(${beta}deg) rotateY(${gamma}deg)`;
 
 }
  
