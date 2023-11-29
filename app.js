@@ -110,8 +110,30 @@ function map(val, minA, maxA, minB, maxB) {
 
 window.addEventListener("deviceorientation", handleOrientation, false);
 
+function percentage(value, max, min) {
+    // gamma [-90 to 90] = 180
+    // beta [-180 to 180] = 360
+  
+    let positiveValue;
+
+    //Turn the value into a positive value, otherwise add
+    if(value <= -0.000001 ) {
+        positiveValue = ((value * -1) - min) * -1 ;
+    } else {
+        positiveValue = value + min;
+    }
+
+    console.log("New Value: " + positiveValue + "/" + max)
+
+    // make it a percentage
+    let percent = (positiveValue / max) * 100
+
+    // return value
+    console.log("Current Percentage: " + percent + "%")
+    return percent;
+}
+
 function handleOrientation(event) {
-    const absolute = event.absolute;
     const alpha = event.alpha;
     const beta = event.beta;
     const gamma = event.gamma;
@@ -121,23 +143,10 @@ function handleOrientation(event) {
     document.querySelector('.beta').innerHTML = beta 
     document.querySelector('.gamma').innerHTML = gamma 
 
-    // limit beta
-    if(beta > 45) {
-        beta = 45
-    } else if(beta < -45) {
-        beta = -45;
-    }
-
-
-    var y = event.gamma; // In degree in the range [-90,90]
-    console.log("gamma: " + y + "\n");
-    //value on gama is [-90, 90] => but we want to have between [0, 180], to be possiblle to compute 100% of 180
-    y += 90;
-    let gammaPercentage = ((gamma * 100) / 270).toFixed(0);
-    console.log("gamma percent: " + gammaPercentage + "\n");
-
-
-
+    console.log("gamma: " + gamma + "\n");
+    var percent = percentage(gamma, 270);
+    console.log("gamma percent: " + percent + "\n");
+  
 
     // Rotate Ticket
     ticket.style.transform = `perspective(600px) rotateX(${beta}deg) rotateY(${gamma}deg)`;
@@ -164,17 +173,17 @@ function handleOrientation(event) {
             text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
             background: 
                 radial-gradient(ellipse farthest-corner at right bottom, 
-                    hsl(49, 99%, ${61 + gammaPercentage + "%"}) ${0 + beta / 2 + "%"}, 
-                    hsl(40, 98%, ${59 + gammaPercentage + "%"}) ${8 + beta / 2 + "%"}, 
-                    hsl(41, 60%, ${39 + gammaPercentage + "%"}) ${30 + beta / 2 + "%"}, 
-                    hsl(42, 49%, ${36 + gammaPercentage + "%"}) ${40 + beta / 2 + "%"}, 
-                    transparent ${80 + gammaPercentage + "%"}),
+                    hsl(49, 99%, ${61 + percentage(gamma, 180, 90) + "%"}) ${0 + beta / 2 + "%"}, 
+                    hsl(40, 98%, ${59 + percentage(gamma, 180, 90) + "%"}) ${8 + beta / 2 + "%"}, 
+                    hsl(41, 60%, ${39 + percentage(gamma, 180, 90) + "%"}) ${30 + beta / 2 + "%"}, 
+                    hsl(42, 49%, ${36 + percentage(gamma, 180, 90) + "%"}) ${40 + beta / 2 + "%"}, 
+                    transparent ${80 + percentage(gamma, 180, 90) + "%"}),
                 radial-gradient(ellipse farthest-corner at left top, 
-                    hsl(0, 0%, ${100 + gammaPercentage  + "%"}) ${0 + beta / 2 + "%"}, 
-                    hsl(60, 100%, ${84 + gammaPercentage  + "%"}) ${8 + beta / 2 + "%"}, 
-                    hsl(44, 54%, ${61 + gammaPercentage  + "%"}) ${25 + beta / 2 + "%"}, 
-                    hsl(42, 50%, ${24 + gammaPercentage  + "%"}) ${62.5 + beta / 2 + "%"}, 
-                    hsl(42, 50%, ${24 + gammaPercentage  + "%"}) ${100 + beta / 2 + "%"});
+                    hsl(0, 0%, ${100 + percentage(gamma, 180, 90)  + "%"}) ${0 + beta / 2 + "%"}, 
+                    hsl(60, 100%, ${84 + percentage(gamma, 180, 90)  + "%"}) ${8 + beta / 2 + "%"}, 
+                    hsl(44, 54%, ${61 + percentage(gamma, 180, 90)  + "%"}) ${25 + beta / 2 + "%"}, 
+                    hsl(42, 50%, ${24 + percentage(gamma, 180, 90)  + "%"}) ${62.5 + beta / 2 + "%"}, 
+                    hsl(42, 50%, ${24 + percentage(gamma, 180, 90)  + "%"}) ${100 + beta / 2 + "%"});
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;`;        
             break;
@@ -190,14 +199,14 @@ function handleOrientation(event) {
         ticket.style.textShadow = '0px 2px 0px rgba(0, 0, 0, 0.1)';
         shiny.style = `
             background: linear-gradient(252.25deg, 
-                hsl(${222 + (gamma / 2)}, 85%, 30%) ${0 + beta / 2 + "%"}, 
-                hsl(${239 + (gamma / 2)}, 88%, 30%) ${39.52 + beta / 2 + "%"}, 
-                hsl(${0 + (gamma / 2)}, 0%, 30%) ${62.11 + beta / 2 + "%"}, 
-                hsl(${290 + (gamma / 2)}, 88%, 30%) ${74.53 + beta / 2 + "%"}, 
-                hsl(${237 + (gamma / 2)}, 86%, 30%) ${86.95 + beta / 2 + "%"}, 
-                hsl(${227 + (gamma / 2)}, 89%, 30%) ${99.38 + beta / 2 + "%"}, 
-                hsl(${204 + (gamma / 2)}, 52%, 30%) ${119.7 + beta / 2 + "%"}, 
-                hsl(${0 + (gamma / 2)}, 0%, 30%) ${138.9 + beta / 2 + "%"});`
+                hsl(${222 + (gamma / 2)}, 85%, 30%) ${0 + percentage(beta, 360, 180) / 2 + "%"}, 
+                hsl(${239 + (gamma / 2)}, 88%, 30%) ${39.52 + percentage(beta, 360, 180) / 2 + "%"}, 
+                hsl(${0 + (gamma / 2)}, 0%, 30%) ${62.11 + percentage(beta, 360, 180) / 2 + "%"}, 
+                hsl(${290 + (gamma / 2)}, 88%, 30%) ${74.53 + percentage(beta, 360, 180) / 2 + "%"}, 
+                hsl(${237 + (gamma / 2)}, 86%, 30%) ${86.95 + percentage(beta, 360, 180) / 2 + "%"}, 
+                hsl(${227 + (gamma / 2)}, 89%, 30%) ${99.38 + percentage(beta, 360, 180) / 2 + "%"}, 
+                hsl(${204 + (gamma / 2)}, 52%, 30%) ${119.7 + percentage(beta, 360, 180) / 2 + "%"}, 
+                hsl(${0 + (gamma / 2)}, 0%, 30%) ${138.9 + percentage(beta, 360, 180) / 2 + "%"});`
         ticketNumber.style = `text-shadow: 0;background: transparent; color:white;`     
         break;
 
