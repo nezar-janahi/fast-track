@@ -143,6 +143,8 @@ function handleOrientation(event) {
     const beta = event.beta;
     const gamma = event.gamma;
 
+    console.log(event)
+
     // Limit the gamma to [-30, 30] so that it doesn't rotate too much
     if(gamma > 30) {
         gamma = 30
@@ -170,24 +172,26 @@ function handleOrientation(event) {
             ticket.style.color = `black`
             ticket.style.textShadow = `0px 0px transparent`;
 
-            ticketFooter.style.borderTop = `2px dashed rgba(0,0,0,0.2)`;
-            ticketFooter.style.padding = "1em 1em"        
+            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, rgba(0,0,0,0.15) 0%, rgba(0, 0, 0, 0) 100%)`;
 
+            ticketFooter.style.borderTop = `2px dashed rgba(0,0,0,0.2)`;
+            ticketFooter.style.padding = "1em 1em"     
+            
             ticketNumber.style = `
             text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
             background: 
                 radial-gradient(ellipse farthest-corner at right bottom, 
-                    hsl(49, 99%, ${(61 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${0 + percentage(beta, 360, 180) / 2 + "%"}, 
-                    hsl(40, 98%, ${(59 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${8 + percentage(beta, 360, 180) / 2 + "%"}, 
-                    hsl(41, 60%, ${(39 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${30 + percentage(beta, 360, 180) / 2 + "%"}, 
-                    hsl(42, 49%, ${(36 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${40 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    hsl(49, 99%, ${(61 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${0 + percentage(beta, 360, 180) * 5 + "%"}, 
+                    hsl(40, 98%, ${(59 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${8 + percentage(beta, 360, 180) * 5 + "%"}, 
+                    hsl(41, 60%, ${(39 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${30 + percentage(beta, 360, 180) * 5 + "%"}, 
+                    hsl(42, 49%, ${(36 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${40 + percentage(beta, 360, 180) * 5 + "%"}, 
                     transparent ${(80 + percentage(gamma, 180, 90)) / 1.5 + "%"}),
                 radial-gradient(ellipse farthest-corner at left top, 
-                    hsl(0, 0%, ${(100 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${0 + percentage(beta, 360, 180) / 2 + "%"}, 
-                    hsl(60, 100%, ${(84 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${8 + percentage(beta, 360, 180) / 2 + "%"}, 
-                    hsl(44, 54%, ${(61 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${25 + percentage(beta, 360, 180) / 2 + "%"}, 
-                    hsl(42, 50%, ${(24 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${62.5 + percentage(beta, 360, 180) / 2 + "%"}, 
-                    hsl(42, 50%, ${(24 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${100 + percentage(beta, 360, 180) / 2 + "%"});
+                    hsl(0, 0%, ${(100 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${0 + percentage(beta, 360, 180) * 5 + "%"}, 
+                    hsl(60, 100%, ${(84 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${8 + percentage(beta, 360, 180) * 5 + "%"}, 
+                    hsl(44, 54%, ${(61 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${25 + percentage(beta, 360, 180) * 5 + "%"}, 
+                    hsl(42, 50%, ${(24 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${62.5 + percentage(beta, 360, 180) * 5 + "%"}, 
+                    hsl(42, 50%, ${(24 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${100 + percentage(beta, 360, 180) * 5 + "%"});
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;`;        
             break;
@@ -195,6 +199,8 @@ function handleOrientation(event) {
     // Iridescent
       case 'version1':
         info.style.padding = '1em 2em'
+
+        spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, rgba(255,255,255,0.15) 0%, rgba(255,255,255, 0) 100%)`;
 
         border.style.opacity = 1
         progressBarContainer.style.background = "rgba(0,0,0,0.2)"
@@ -204,18 +210,20 @@ function handleOrientation(event) {
         ticket.style.textShadow = '0px 2px 0px rgba(0, 0, 0, 0.1)';
         shiny.style = `
             background: linear-gradient(252.25deg, 
-                hsl(${222 + (gamma * 2)}, 85%, 30%) ${0 + percentage(beta, 360, 180) / 2 + "%"}, 
-                hsl(${239 + (gamma * 2)}, 88%, 30%) ${39.52 + percentage(beta, 360, 180) / 2 + "%"}, 
-                hsl(${0 + (gamma * 2)}, 0%, 30%) ${62.11 + percentage(beta, 360, 180) / 2 + "%"}, 
-                hsl(${290 + (gamma * 2)}, 88%, 30%) ${74.53 + percentage(beta, 360, 180) / 2 + "%"}, 
-                hsl(${237 + (gamma * 2)}, 86%, 30%) ${86.95 + percentage(beta, 360, 180) / 2 + "%"}, 
-                hsl(${227 + (gamma * 2)}, 89%, 30%) ${99.38 + percentage(beta, 360, 180) / 2 + "%"}, 
-                hsl(${204 + (gamma * 2)}, 52%, 30%) ${119.7 + percentage(beta, 360, 180) / 2 + "%"}, 
-                hsl(${0 + (gamma * 2)}, 0%, 30%) ${138.9 + percentage(beta, 360, 180) / 2 + "%"});`
+                hsl(${222}, 85%, 30%) ${0 + percentage(beta, 360, 180) * 5 + "%"}, 
+                hsl(${239}, 88%, 30%) ${39.52 + percentage(beta, 360, 180) * 5 + "%"}, 
+                hsl(${0}, 0%, 30%) ${62.11 + percentage(beta, 360, 180) * 5 + "%"}, 
+                hsl(${290}, 88%, 30%) ${74.53 + percentage(beta, 360, 180) * 5 + "%"}, 
+                hsl(${237}, 86%, 30%) ${86.95 + percentage(beta, 360, 180) * 5 + "%"}, 
+                hsl(${227}, 89%, 30%) ${99.38 + percentage(beta, 360, 180) * 5 + "%"}, 
+                hsl(${204}, 52%, 30%) ${119.7 + percentage(beta, 360, 180) * 5 + "%"}, 
+                hsl(${0}, 0%, 30%) ${138.9 + percentage(beta, 360, 180) * 5 + "%"});`
         ticketNumber.style = `text-shadow: 0;background: transparent; color:white;`     
         break;
 
         case 'default': 
+            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, rgba(0,0,0,0.15) 0%, rgba(0, 0, 0, 0) 100%)`;
+
             border.style.opacity = 0
 
             shiny.style.background = 'white';
@@ -317,6 +325,6 @@ function controlCard(e) {
    
                                         
     // Spotlight
-    spotlight.style.background = `radial-gradient(circle at ${percentageX}% ${percentageY}%, rgba(255,255,255,0.75) 0%, rgba(255, 255, 255, 0) 100%)`;
+    //spotlight.style.background = `radial-gradient(circle at ${percentageX}% ${percentageY}%, rgba(255,255,255,0.75) 0%, rgba(255, 255, 255, 0) 100%)`;
 
 }

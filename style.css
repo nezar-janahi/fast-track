@@ -96,7 +96,7 @@ h1 {
 }
 
 .ticket .spotlight {
-    opacity:0; /* easier than removing */
+    opacity:1; /* easier than removing */
     mix-blend-mode: hard-light;
     z-index: 2;
 }
