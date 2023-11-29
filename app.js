@@ -223,9 +223,6 @@ function handleOrientation(event) {
 
         case 'default': 
             
-            // When flat, make the spotlight dissapear for clear visibility 
-            spotlight.style.opacity = 0;
-
             // When tiled, increase the opacity
             if(gamma < 0) {
                 spotlight.style.opacity = (gamma * -1) / 30;
@@ -238,10 +235,6 @@ function handleOrientation(event) {
             } else {
                 spotlight.style.opacity = beta / 30;
             }
-
-            
-
-
 
             
             spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 60, 30)}%, rgba(0,0,0,0.3) 0%, rgba(0, 0, 0, 0) 100%)`;
