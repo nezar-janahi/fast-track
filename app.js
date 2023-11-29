@@ -152,7 +152,7 @@ function handleOrientation(event) {
         gamma = -30
     }
 
-    ticket.style.transform = `perspective(800px) rotateX(${0}deg) rotateY(${gamma / 3}deg)`;
+    ticket.style.transform = `perspective(800px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg)`;
 
     switch(onChange()) {
     
