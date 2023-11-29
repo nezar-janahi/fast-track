@@ -130,32 +130,38 @@ function percentage(value, max, min) {
     return percent;
 }
 
+function phoneStandingUp(value) {
+    if(value >= 70 && value <= 110) {
+        return true
+    } else {
+        return false
+    }
+}
+
 function handleOrientation(event) {
     const alpha = event.alpha;
     const beta = event.beta;
     const gamma = event.gamma;
 
-    // phone is Portrait [0,90,0]
-
-    // phone is display up [0,0,0]
+    // Phone Stance
+    if(phoneStandingUp(beta)) {
+        // Phone is held up [0,90,0]
+        ticket.style.transform = `perspective(800px) rotateX(${-beta + 90}deg) rotateY(${gamma}deg)`;
+    } else {
+        // Phone is flat [0,0,0]
+        ticket.style.transform = `perspective(800px) rotateX(${-beta}deg) rotateY(${gamma}deg)`;
+    }
     
-    // limit Gamma
-    if(gamma > 30 ) {
-        gamma = 30;
-    } else if(gamma < -30) {
-        gamma = -30;
+    // Limit the gamma to [-30, 30]
+    if(gamma > 30) {
+        gamma = 30
     }
 
-    // Limit beta
-    if(beta > 20 ) {
-        beta = 20;
-    } else if(beta < -20) {
-        beta = -20
+    if(gamma < -30) {
+        gamma = -30
     }
 
 
-    // Rotate Ticket
-    ticket.style.transform = `perspective(800px) rotateX(${-beta}deg) rotateY(${gamma}deg)`;
 
     switch(onChange()) {
     
@@ -174,7 +180,7 @@ function handleOrientation(event) {
             ticket.style.textShadow = `0px 0px transparent`;
 
             ticketFooter.style.borderTop = `2px dashed rgba(0,0,0,0.2)`;
-            ticketFooter.style.padding = "1em 1em"
+            ticketFooter.style.padding = "1em 1em"        
 
             ticketNumber.style = `
             text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
