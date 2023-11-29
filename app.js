@@ -145,6 +145,7 @@ function handleOrientation(event) {
 
     switch(onChange()) {
     
+        // Gold Ticket
         case 'version2':
             border.style.opacity = 0;
 
@@ -180,6 +181,7 @@ function handleOrientation(event) {
             -webkit-text-fill-color: transparent;`;        
             break;
 
+    // Iridescent
       case 'version1':
         info.style.padding = '1em 2em'
 
