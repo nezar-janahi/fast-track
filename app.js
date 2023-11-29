@@ -172,7 +172,7 @@ function handleOrientation(event) {
             ticket.style.color = `black`
             ticket.style.textShadow = `0px 0px transparent`;
 
-            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, rgba(0,0,0,0.2) 0%, rgba(0, 0, 0, 0) 100%)`;
+            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, rgba(0,0,0,0.3) 0%, rgba(0, 0, 0, 0) 100%)`;
 
             ticketFooter.style.borderTop = `2px dashed rgba(0,0,0,0.2)`;
             ticketFooter.style.padding = "1em 1em"     
@@ -200,7 +200,7 @@ function handleOrientation(event) {
       case 'version1':
         info.style.padding = '1em 2em'
 
-        spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, rgba(255,255,255,0.2) 0%, rgba(255,255,255, 0) 100%)`;
+        spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, rgba(255,255,255,0.3) 0%, rgba(255,255,255, 0) 100%)`;
 
         border.style.opacity = 1
         progressBarContainer.style.background = "rgba(0,0,0,0.2)"
@@ -222,7 +222,7 @@ function handleOrientation(event) {
         break;
 
         case 'default': 
-            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, rgba(0,0,0,0.2) 0%, rgba(0, 0, 0, 0) 100%)`;
+            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, rgba(0,0,0,0.3) 0%, rgba(0, 0, 0, 0) 100%)`;
 
             border.style.opacity = 0
 
