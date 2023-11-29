@@ -173,17 +173,17 @@ function handleOrientation(event) {
             text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
             background: 
                 radial-gradient(ellipse farthest-corner at right bottom, 
-                    hsl(49, 99%, ${61 + percentage(gamma, 180, 90) + "%"}) ${0 + beta / 2 + "%"}, 
-                    hsl(40, 98%, ${59 + percentage(gamma, 180, 90) + "%"}) ${8 + beta / 2 + "%"}, 
-                    hsl(41, 60%, ${39 + percentage(gamma, 180, 90) + "%"}) ${30 + beta / 2 + "%"}, 
-                    hsl(42, 49%, ${36 + percentage(gamma, 180, 90) + "%"}) ${40 + beta / 2 + "%"}, 
+                    hsl(49, 99%, ${61 + percentage(gamma, 180, 90) + "%"}) ${0 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    hsl(40, 98%, ${59 + percentage(gamma, 180, 90) + "%"}) ${8 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    hsl(41, 60%, ${39 + percentage(gamma, 180, 90) + "%"}) ${30 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    hsl(42, 49%, ${36 + percentage(gamma, 180, 90) + "%"}) ${40 + percentage(beta, 360, 180) / 2 + "%"}, 
                     transparent ${80 + percentage(gamma, 180, 90) + "%"}),
                 radial-gradient(ellipse farthest-corner at left top, 
-                    hsl(0, 0%, ${100 + percentage(gamma, 180, 90)  + "%"}) ${0 + beta / 2 + "%"}, 
-                    hsl(60, 100%, ${84 + percentage(gamma, 180, 90)  + "%"}) ${8 + beta / 2 + "%"}, 
-                    hsl(44, 54%, ${61 + percentage(gamma, 180, 90)  + "%"}) ${25 + beta / 2 + "%"}, 
-                    hsl(42, 50%, ${24 + percentage(gamma, 180, 90)  + "%"}) ${62.5 + beta / 2 + "%"}, 
-                    hsl(42, 50%, ${24 + percentage(gamma, 180, 90)  + "%"}) ${100 + beta / 2 + "%"});
+                    hsl(0, 0%, ${100 + percentage(gamma, 180, 90)  + "%"}) ${0 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    hsl(60, 100%, ${84 + percentage(gamma, 180, 90)  + "%"}) ${8 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    hsl(44, 54%, ${61 + percentage(gamma, 180, 90)  + "%"}) ${25 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    hsl(42, 50%, ${24 + percentage(gamma, 180, 90)  + "%"}) ${62.5 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    hsl(42, 50%, ${24 + percentage(gamma, 180, 90)  + "%"}) ${100 + percentage(beta, 360, 180) / 2 + "%"});
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;`;        
             break;
