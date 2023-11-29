@@ -222,8 +222,29 @@ function handleOrientation(event) {
         break;
 
         case 'default': 
+            
+            // When flat, make the spotlight dissapear for clear visibility 
+            spotlight.style.opacity = 0;
 
-            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 275, 5)}%, rgba(0,0,0,0.3) 0%, rgba(0, 0, 0, 0) 100%)`;
+            // When tiled, increase the opacity
+            if(gamma < 0) {
+                spotlight.style.opacity = (gamma * -1) / 30;
+            } else {
+                spotlight.style.opacity = gamma / 30;
+            }
+
+            if(beta < 0) {
+                spotlight.style.opacity = (beta * -1) / 30;
+            } else {
+                spotlight.style.opacity = beta / 30;
+            }
+
+            
+
+
+
+            
+            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 60, 30)}%, rgba(0,0,0,0.3) 0%, rgba(0, 0, 0, 0) 100%)`;
 
             border.style.opacity = 0
 
