@@ -143,7 +143,7 @@ function handleOrientation(event) {
     const beta = event.beta;
     const gamma = event.gamma;
 
-    // Limit the gamma to [-30, 30]
+    // Limit the gamma to [-30, 30] so that it doesn't rotate too much
     if(gamma > 30) {
         gamma = 30
     }
@@ -204,14 +204,14 @@ function handleOrientation(event) {
         ticket.style.textShadow = '0px 2px 0px rgba(0, 0, 0, 0.1)';
         shiny.style = `
             background: linear-gradient(252.25deg, 
-                hsl(${222 + (gamma / 20)}, 85%, 30%) ${0 + percentage(beta, 360, 180) / 2 + "%"}, 
-                hsl(${239 + (gamma / 20)}, 88%, 30%) ${39.52 + percentage(beta, 360, 180) / 2 + "%"}, 
-                hsl(${0 + (gamma / 20)}, 0%, 30%) ${62.11 + percentage(beta, 360, 180) / 2 + "%"}, 
-                hsl(${290 + (gamma / 20)}, 88%, 30%) ${74.53 + percentage(beta, 360, 180) / 2 + "%"}, 
-                hsl(${237 + (gamma / 20)}, 86%, 30%) ${86.95 + percentage(beta, 360, 180) / 2 + "%"}, 
-                hsl(${227 + (gamma / 20)}, 89%, 30%) ${99.38 + percentage(beta, 360, 180) / 2 + "%"}, 
-                hsl(${204 + (gamma / 20)}, 52%, 30%) ${119.7 + percentage(beta, 360, 180) / 2 + "%"}, 
-                hsl(${0 + (gamma / 20)}, 0%, 30%) ${138.9 + percentage(beta, 360, 180) / 2 + "%"});`
+                hsl(${222 + (gamma * 2)}, 85%, 30%) ${0 + percentage(beta, 360, 180) / 2 + "%"}, 
+                hsl(${239 + (gamma * 2)}, 88%, 30%) ${39.52 + percentage(beta, 360, 180) / 2 + "%"}, 
+                hsl(${0 + (gamma * 2)}, 0%, 30%) ${62.11 + percentage(beta, 360, 180) / 2 + "%"}, 
+                hsl(${290 + (gamma * 2)}, 88%, 30%) ${74.53 + percentage(beta, 360, 180) / 2 + "%"}, 
+                hsl(${237 + (gamma * 2)}, 86%, 30%) ${86.95 + percentage(beta, 360, 180) / 2 + "%"}, 
+                hsl(${227 + (gamma * 2)}, 89%, 30%) ${99.38 + percentage(beta, 360, 180) / 2 + "%"}, 
+                hsl(${204 + (gamma * 2)}, 52%, 30%) ${119.7 + percentage(beta, 360, 180) / 2 + "%"}, 
+                hsl(${0 + (gamma * 2)}, 0%, 30%) ${138.9 + percentage(beta, 360, 180) / 2 + "%"});`
         ticketNumber.style = `text-shadow: 0;background: transparent; color:white;`     
         break;
 
