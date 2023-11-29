@@ -146,7 +146,7 @@ function handleOrientation(event) {
     // Phone Stance
     if(phoneStandingUp(beta)) {
         // Phone is held up [0,90,0]
-        ticket.style.transform = `perspective(800px) rotateX(${-beta + 90}deg) rotateY(${gamma}deg)`;
+        ticket.style.transform = `perspective(800px) rotateX(${-0}deg) rotateY(${gamma}deg)`;
     } else {
         // Phone is flat [0,0,0]
         ticket.style.transform = `perspective(800px) rotateX(${-beta}deg) rotateY(${gamma}deg)`;
