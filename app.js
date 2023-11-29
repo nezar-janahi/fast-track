@@ -135,13 +135,27 @@ function handleOrientation(event) {
     const beta = event.beta;
     const gamma = event.gamma;
 
-    // Test
-    document.querySelector('.alpha').innerHTML = alpha 
-    document.querySelector('.beta').innerHTML = beta 
-    document.querySelector('.gamma').innerHTML = gamma   
+    // phone is Portrait [0,90,0]
+
+    // phone is display up [0,0,0]
+    
+    // limit Gamma
+    if(gamma > 30 ) {
+        gamma = 30;
+    } else if(gamma < -30) {
+        gamma = -30;
+    }
+
+    // Limit beta
+    if(beta > 20 ) {
+        beta = 20;
+    } else if(beta < -20) {
+        beta = -20
+    }
+
 
     // Rotate Ticket
-    ticket.style.transform = `perspective(600px) rotateX(${beta}deg) rotateY(${gamma}deg)`;
+    ticket.style.transform = `perspective(800px) rotateX(${-beta}deg) rotateY(${gamma}deg)`;
 
     switch(onChange()) {
     
@@ -166,17 +180,17 @@ function handleOrientation(event) {
             text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
             background: 
                 radial-gradient(ellipse farthest-corner at right bottom, 
-                    hsl(49, 99%, ${61 + percentage(gamma, 180, 90) + "%"}) ${0 + percentage(beta, 360, 180) / 2 + "%"}, 
-                    hsl(40, 98%, ${59 + percentage(gamma, 180, 90) + "%"}) ${8 + percentage(beta, 360, 180) / 2 + "%"}, 
-                    hsl(41, 60%, ${39 + percentage(gamma, 180, 90) + "%"}) ${30 + percentage(beta, 360, 180) / 2 + "%"}, 
-                    hsl(42, 49%, ${36 + percentage(gamma, 180, 90) + "%"}) ${40 + percentage(beta, 360, 180) / 2 + "%"}, 
-                    transparent ${80 + percentage(gamma, 180, 90) + "%"}),
+                    hsl(49, 99%, ${(61 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${0 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    hsl(40, 98%, ${(59 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${8 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    hsl(41, 60%, ${(39 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${30 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    hsl(42, 49%, ${(36 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${40 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    transparent ${(80 + percentage(gamma, 180, 90)) / 1.5 + "%"}),
                 radial-gradient(ellipse farthest-corner at left top, 
-                    hsl(0, 0%, ${100 + percentage(gamma, 180, 90)  + "%"}) ${0 + percentage(beta, 360, 180) / 2 + "%"}, 
-                    hsl(60, 100%, ${84 + percentage(gamma, 180, 90)  + "%"}) ${8 + percentage(beta, 360, 180) / 2 + "%"}, 
-                    hsl(44, 54%, ${61 + percentage(gamma, 180, 90)  + "%"}) ${25 + percentage(beta, 360, 180) / 2 + "%"}, 
-                    hsl(42, 50%, ${24 + percentage(gamma, 180, 90)  + "%"}) ${62.5 + percentage(beta, 360, 180) / 2 + "%"}, 
-                    hsl(42, 50%, ${24 + percentage(gamma, 180, 90)  + "%"}) ${100 + percentage(beta, 360, 180) / 2 + "%"});
+                    hsl(0, 0%, ${(100 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${0 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    hsl(60, 100%, ${(84 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${8 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    hsl(44, 54%, ${(61 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${25 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    hsl(42, 50%, ${(24 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${62.5 + percentage(beta, 360, 180) / 2 + "%"}, 
+                    hsl(42, 50%, ${(24 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${100 + percentage(beta, 360, 180) / 2 + "%"});
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;`;        
             break;
@@ -223,8 +237,6 @@ function controlCard(e) {
     let mouseX = e.offsetX; 
     let mouseY = e.offsetY;
 
-    console.log(mouseY)
-
     // Get percentages of x,y
     let percentageX = e.offsetX / ticket.offsetWidth * 100;
     let percentageY = e.offsetY / ticket.offsetHeight * 100;
@@ -235,9 +247,8 @@ function controlCard(e) {
     // Rotate the card
     ticket.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     
-    // Shiny / iridescent effect
     switch(onChange()) {
-    
+        // Gold
         case 'version2':
             border.style.opacity = 0;
 
@@ -253,6 +264,7 @@ function controlCard(e) {
 
             ticketFooter.style.borderTop = `2px dashed rgba(0,0,0,0.2)`;
             ticketFooter.style.padding = "1em 1em"
+
 
             ticketNumber.style = `
             text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
@@ -273,6 +285,7 @@ function controlCard(e) {
             -webkit-text-fill-color: transparent;`;        
             break;
 
+    // Iridescent
       case 'version1':
         info.style.padding = '1em 2em'
 
