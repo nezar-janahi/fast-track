@@ -143,8 +143,6 @@ function handleOrientation(event) {
     const beta = event.beta;
     const gamma = event.gamma;
 
-    console.log(event)
-
     // Limit the gamma to [-30, 30] so that it doesn't rotate too much
     if(gamma > 30) {
         gamma = 30
@@ -172,11 +170,25 @@ function handleOrientation(event) {
             ticket.style.color = `black`
             ticket.style.textShadow = `0px 0px transparent`;
 
-            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, rgba(0,0,0,0.3) 0%, rgba(0, 0, 0, 0) 100%)`;
+             // When tiled, increase the opacity
+             if(gamma <= 0 && beta <= 0) {
+                spotlight.style.opacity = (gamma * -1) / 30;
+            } else {
+                spotlight.style.opacity = gamma / 30;
+            }
+
+            if(beta < 0) {
+                spotlight.style.opacity = (beta * -1) / 30;
+            } else {
+                spotlight.style.opacity = beta / 30;
+            }
+
+            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 60, 30)}%, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%)`;
 
             ticketFooter.style.borderTop = `2px dashed rgba(0,0,0,0.2)`;
             ticketFooter.style.padding = "1em 1em"     
             
+
             ticketNumber.style = `
             text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
             background: 
@@ -208,16 +220,16 @@ function handleOrientation(event) {
         ticketFooter.style = `background:transparent;border:1px solid transparent`
         ticket.style.color = 'white'
         ticket.style.textShadow = '0px 2px 0px rgba(0, 0, 0, 0.1)';
-        shiny.style = `
-            background: linear-gradient(252.25deg, 
-                hsl(${222}, 85%, 30%) ${0 + percentage(beta, 360, 180) * 5 + "%"}, 
-                hsl(${239}, 88%, 30%) ${39.52 + percentage(beta, 360, 180) * 5 + "%"}, 
-                hsl(${0}, 0%, 30%) ${62.11 + percentage(beta, 360, 180) * 5 + "%"}, 
-                hsl(${290}, 88%, 30%) ${74.53 + percentage(beta, 360, 180) * 5 + "%"}, 
-                hsl(${237}, 86%, 30%) ${86.95 + percentage(beta, 360, 180) * 5 + "%"}, 
-                hsl(${227}, 89%, 30%) ${99.38 + percentage(beta, 360, 180) * 5 + "%"}, 
-                hsl(${204}, 52%, 30%) ${119.7 + percentage(beta, 360, 180) * 5 + "%"}, 
-                hsl(${0}, 0%, 30%) ${138.9 + percentage(beta, 360, 180) * 5 + "%"});`
+        shiny.style = `background: linear-gradient(252.25deg, 
+            hsl(${222 + beta}, 85%, 64%) ${(0 + percentage(gamma, 60, 30)) / 2 + "%"}, 
+            hsl(${239 + beta}, 88%, 77%) ${(37.27 + percentage(gamma, 60, 30)) / 2 + "%"}, 
+            hsl(${0 + beta}, 50%, 90%) ${(51.95 + percentage(gamma, 60, 30)) / 2 + "%"}, 
+            hsl(${290 + beta}, 88%, 80%) ${(92.6 + percentage(gamma, 60, 30)) / 2 + "%"}, 
+            hsl(${237 + beta}, 86%, 75%) ${(111.8 + percentage(gamma, 60, 30)) / 2 + "%"}, 
+            hsl(${227 + beta}, 89%, 67%) ${(136.64 + percentage(gamma, 60, 30)) / 2 + "%"}, 
+            hsl(${204 + beta}, 52%, 63%) ${(175.04 + percentage(gamma, 60, 30)) / 2 + "%"}, 
+            hsl(${0 + beta}, 50%, 96%) ${(216.82 + percentage(gamma, 60, 30)) / 2 + "%"}`
+         
         ticketNumber.style = `text-shadow: 0;background: transparent; color:white;`     
         break;
 
