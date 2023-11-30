@@ -147,7 +147,7 @@ function handleOrientation(event) {
     // Allow the ticket to rotate
     ticket.style.transform = `perspective(800px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg)`;
 
-    // When tiled, increase the opacity
+    // When tilt, increase the opacity
     if(gamma <= 0 && beta <= 0) {
         spotlight.style.opacity = (gamma * -1) / 30;
     } else {
@@ -204,7 +204,7 @@ function handleOrientation(event) {
         ticket.classList.remove('no-gradient', 'gold')
 
         spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, 
-        rgba(255,255,255,0.5) 0%, 
+        rgba(255,255,255,0.75) 0%, 
         rgba(255,255,255, 0) 100%)`;
 
         // Only needed when the previous selection was 'gold'
@@ -212,19 +212,19 @@ function handleOrientation(event) {
 
         
        shiny.style = `       
-       background: conic-gradient(from ${176.2 + gamma + "deg"} at 50% 50%, 
-        hsl(0, 0%, 0%) ${-24.66 + gamma + "deg"}, 
-        hsl(0, 0%, 100%) ${0.25 + gamma + "deg"}, 
-        hsl(0, 0%, 0%) ${50.63 + gamma + "deg"}, 
-        hsl(0, 0%, 0%) ${51.97 + gamma + "deg"}, 
-        hsl(0, 0%, 100%) ${88.12 + gamma + "deg"}, 
-        hsl(0, 0%, 0%) ${142.5 + gamma + "deg"}, 
-        hsl(0, 0%, 100%) ${196.87 + gamma + "deg"}, 
-        hsl(0, 0%, 0%) ${256.87 + gamma + "deg"}, 
-        hsl(0, 0%, 100%) ${300 + gamma + "deg"}, 
-        hsl(0, 0%, 0%) ${335.2 + gamma + "deg"}, 
-        hsl(0, 0%, 0%) ${335.34 + gamma + "deg"} , 
-        hsl(0, 0%, 100%) ${360.25 + gamma + "deg"}), 
+       background: conic-gradient(from ${176.2 + (gamma / 4) + "deg"} at 50% 50%, 
+        hsl(0, 0%, 0%) ${-24.66 + (gamma / 4) + "deg"}, 
+        hsl(0, 0%, 100%) ${0.25 + (gamma / 4) + "deg"}, 
+        hsl(0, 0%, 0%) ${50.63 + (gamma / 4) + "deg"}, 
+        hsl(0, 0%, 0%) ${51.97 + (gamma / 4) + "deg"}, 
+        hsl(0, 0%, 100%) ${88.12 + (gamma / 4) + "deg"}, 
+        hsl(0, 0%, 0%) ${142.5 + (gamma / 4) + "deg"}, 
+        hsl(0, 0%, 100%) ${196.87 + (gamma / 4) + "deg"}, 
+        hsl(0, 0%, 0%) ${256.87 + (gamma / 4) + "deg"}, 
+        hsl(0, 0%, 100%) ${300 + (gamma / 4) + "deg"}, 
+        hsl(0, 0%, 0%) ${335.2 + (gamma / 4) + "deg"}, 
+        hsl(0, 0%, 0%) ${335.34 + (gamma / 4) + "deg"} , 
+        hsl(0, 0%, 100%) ${360.25 + (gamma / 4) + "deg"}), 
         
         radial-gradient(95.11% 95.11% at 36.64% 4.89%, 
             hsl(${178 + beta}, 66%, 49%) 0%, 
@@ -234,6 +234,8 @@ function handleOrientation(event) {
             hsl(${148 + beta}, 91%, 67%) 87.5%, 
             hsl(${199 + beta}, 90%, 65%) 100%);`
         break;
+
+        //
 
         case 'default': 
             
