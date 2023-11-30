@@ -212,7 +212,7 @@ function handleOrientation(event) {
       case 'version1':
         info.style.padding = '1em 2em'
 
-        spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, rgba(255,255,255,0.3) 0%, rgba(255,255,255, 0) 100%)`;
+        spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, rgba(255,255,255,0.5) 0%, rgba(255,255,255, 0) 100%)`;
 
         border.style.opacity = 1
         progressBarContainer.style.background = "rgba(0,0,0,0.2)"
@@ -220,6 +220,7 @@ function handleOrientation(event) {
         ticketFooter.style = `background:transparent;border:1px solid transparent`
         ticket.style.color = 'white'
         ticket.style.textShadow = '0px 2px 0px rgba(0, 0, 0, 0.1)';
+        /*
         shiny.style = `background: linear-gradient(252.25deg, 
             hsl(${222 + beta}, 85%, 64%) ${(0 + percentage(gamma, 60, 30)) / 2 + "%"}, 
             hsl(${239 + beta}, 88%, 77%) ${(37.27 + percentage(gamma, 60, 30)) / 2 + "%"}, 
@@ -229,7 +230,39 @@ function handleOrientation(event) {
             hsl(${227 + beta}, 89%, 67%) ${(136.64 + percentage(gamma, 60, 30)) / 2 + "%"}, 
             hsl(${204 + beta}, 52%, 63%) ${(175.04 + percentage(gamma, 60, 30)) / 2 + "%"}, 
             hsl(${0 + beta}, 50%, 96%) ${(216.82 + percentage(gamma, 60, 30)) / 2 + "%"}`
-         
+        */
+       shiny.style = `       
+       background: conic-gradient(from ${176.2 + gamma + "deg"} at 50% 50%, 
+        hsl(0, 0%, 0%) ${-24.66 + gamma + "deg"}, 
+        hsl(0, 0%, 100%) ${0.25 + gamma + "deg"}, 
+        hsl(0, 0%, 0%) ${50.63 + gamma + "deg"}, 
+        hsl(0, 0%, 0%) ${51.97 + gamma + "deg"}, 
+        hsl(0, 0%, 100%) ${88.12 + gamma + "deg"}, 
+        hsl(0, 0%, 0%) ${142.5 + gamma + "deg"}, 
+        hsl(0, 0%, 100%) ${196.87 + gamma + "deg"}, 
+        hsl(0, 0%, 0%) ${256.87 + gamma + "deg"}, 
+        hsl(0, 0%, 100%) ${300 + gamma + "deg"}, 
+        hsl(0, 0%, 0%) ${335.2 + gamma + "deg"}, 
+        hsl(0, 0%, 0%) ${335.34 + gamma + "deg"} , 
+        hsl(0, 0%, 100%) ${360.25 + gamma + "deg"}), 
+        
+        radial-gradient(95.11% 95.11% at 36.64% 4.89%, 
+            hsl(${178 + beta}, 66%, 49%) 0%, 
+            hsl(${69 + beta}, 89%, 68%) 22.92%, 
+            hsl(${300 + beta}, 98%, 84%) 46.88%, 
+            hsl(${234 + beta}, 93%, 83%) 68.23%, 
+            hsl(${148 + beta}, 91%, 67%) 87.5%, 
+            hsl(${199 + beta}, 90%, 65%) 100%);     
+            
+            background-blend-mode: difference, normal;
+            mix-blend-mode: normal;
+        `
+
+            
+
+
+
+
         ticketNumber.style = `text-shadow: 0;background: transparent; color:white;`     
         break;
 
