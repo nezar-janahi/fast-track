@@ -220,17 +220,7 @@ function handleOrientation(event) {
         ticketFooter.style = `background:transparent;border:1px solid transparent`
         ticket.style.color = 'white'
         ticket.style.textShadow = '0px 2px 0px rgba(0, 0, 0, 0.1)';
-        /*
-        shiny.style = `background: linear-gradient(252.25deg, 
-            hsl(${222 + beta}, 85%, 64%) ${(0 + percentage(gamma, 60, 30)) / 2 + "%"}, 
-            hsl(${239 + beta}, 88%, 77%) ${(37.27 + percentage(gamma, 60, 30)) / 2 + "%"}, 
-            hsl(${0 + beta}, 50%, 90%) ${(51.95 + percentage(gamma, 60, 30)) / 2 + "%"}, 
-            hsl(${290 + beta}, 88%, 80%) ${(92.6 + percentage(gamma, 60, 30)) / 2 + "%"}, 
-            hsl(${237 + beta}, 86%, 75%) ${(111.8 + percentage(gamma, 60, 30)) / 2 + "%"}, 
-            hsl(${227 + beta}, 89%, 67%) ${(136.64 + percentage(gamma, 60, 30)) / 2 + "%"}, 
-            hsl(${204 + beta}, 52%, 63%) ${(175.04 + percentage(gamma, 60, 30)) / 2 + "%"}, 
-            hsl(${0 + beta}, 50%, 96%) ${(216.82 + percentage(gamma, 60, 30)) / 2 + "%"}`
-        */
+        
        shiny.style = `       
        background: conic-gradient(from ${176.2 + gamma + "deg"} at 50% 50%, 
         hsl(0, 0%, 0%) ${-24.66 + gamma + "deg"}, 
@@ -254,8 +244,8 @@ function handleOrientation(event) {
             hsl(${148 + beta}, 91%, 67%) 87.5%, 
             hsl(${199 + beta}, 90%, 65%) 100%);     
             
-            background-blend-mode: difference, normal;
-            mix-blend-mode: normal;
+        background-blend-mode: difference, normal;
+        mix-blend-mode: normal;
         `
 
             
