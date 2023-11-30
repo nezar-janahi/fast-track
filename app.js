@@ -143,7 +143,7 @@ function handleOrientation(event) {
     }
 
     // Allow the ticket to rotate
-    ticket.style.transform = `perspective(800px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg)`;
+    ticket.style.transform = `perspective(600px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg)`;
     
     // When tilt, increase the opacity
     if(gamma <= 0) {
@@ -158,6 +158,24 @@ function handleOrientation(event) {
         spotlight.style.opacity = beta / 120;
     }
 
+    //Turn the value into a positive value, otherwise add
+    if(gamma <= -0.000001 ) {
+        positiveValueGamma = ((gamma * -1) - 30) * -1 ;
+    } else {
+        positiveValueGamma = gamma + 30;
+    }
+
+     //Turn the value into a positive value, otherwise add
+     if(beta <= -0.000001 ) {
+        positiveValueBeta = ((beta * -1) - 30) * -1 ;
+    } else {
+        positiveValueBeta = beta + 30;
+    }
+
+    // Make it a percentage
+    let percentGamma = (positiveValueGamma / 60) * 100
+    let percentBeta = (positiveValueBeta / 60) * 100
+
     // Selector
     switch(onChange()) {
     
@@ -169,9 +187,9 @@ function handleOrientation(event) {
             // Remove 
             ticket.classList.remove('no-gradient', 'iridescent')
 
-            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 60, 30)}%, 
-            rgba(0, 0, 0, 0.2) 0%, 
-            rgba(0, 0, 0, 0) 100%)`;
+            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, 
+            rgba(255, 255, 255, 1) 0%, 
+            rgba(255, 255, 255, 0) 100%)`;
 
             ticketNumber.style = `
             background: 
@@ -201,7 +219,7 @@ function handleOrientation(event) {
         // Remove 
         ticket.classList.remove('no-gradient', 'gold')
 
-        spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, 
+        spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, 
         rgba(255,255,255,0.75) 0%, 
         rgba(255,255,255, 0) 100%)`;
 
@@ -246,32 +264,10 @@ function handleOrientation(event) {
             // Only needed when the previous selection was 'gold'
             ticketNumber.style = `background: black;-webkit-background-clip: text;-webkit-text-fill-color: transparent;`;        
 
-            //Turn the value into a positive value, otherwise add
-            if(gamma <= -0.000001 ) {
-                positiveValueGamma = ((gamma * -1) - 30) * -1 ;
-            } else {
-                positiveValueGamma = gamma + 30;
-            }
-
-             //Turn the value into a positive value, otherwise add
-             if(beta <= -0.000001 ) {
-                positiveValueBeta = ((beta * -1) - 30) * -1 ;
-            } else {
-                positiveValueBeta = beta + 30;
-            }
-
-            // Make it a percentage
-            let percentGamma = (positiveValueGamma / 60) * 100
-            let percentBeta = (positiveValueBeta / 60) * 100
-
-            console.log("percentGamma: " + percentGamma)
-            console.log("percentBeta: " + percentBeta)
-
-
             // Spotlight
             spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, 
-            rgba(0,0,0,1) 0%, 
-            rgba(0, 0, 0, 0) 100%)`;
+            rgba(255,255,255,1) 0%, 
+            rgba(0,0,0, 0.4) 100%)`;
 
             break;
     } 
