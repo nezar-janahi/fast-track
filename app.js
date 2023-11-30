@@ -267,7 +267,7 @@ function handleOrientation(event) {
             // Spotlight
             spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, 
             rgba(255,255,255,1) 0%, 
-            rgba(0,0,0, 0.4) 100%)`;
+            rgba(0,0,0, 1) 100%)`;
 
             break;
     } 
