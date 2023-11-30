@@ -153,18 +153,11 @@ function handleOrientation(event) {
     }
     
     // When tilt, increase the opacity
-    /*
-    if(gamma < 0) {
-        spotlight.style.opacity = (gamma * -1) / 120;
-    } else {
-        spotlight.style.opacity = gamma / 120;
-    }
-
     if(beta < 0) {
-        spotlight.style.opacity = (beta * -1) / 120;
+        spotlight.style.opacity = (beta * -1) / 30;
     } else {
-        spotlight.style.opacity = beta / 120;
-    }*/
+        spotlight.style.opacity = beta / 30;
+    }
 
     //Turn the value into a positive value, otherwise add
     if(gamma <= -0.000001 ) {
@@ -184,6 +177,11 @@ function handleOrientation(event) {
     let percentGamma = (positiveValueGamma / 60) * 100
     let percentBeta = (positiveValueBeta / 60) * 100
 
+    // Spotlight
+    spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, 
+        rgba(0,0,0,0.5) 0%, 
+        rgba(255,255,255,0.1) 100%)`;
+
     // Selector
     switch(onChange()) {
     
@@ -194,10 +192,6 @@ function handleOrientation(event) {
                 
             // Remove 
             ticket.classList.remove('no-gradient', 'iridescent')
-
-            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, 
-            rgba(255, 255, 255, 1) 0%, 
-            rgba(255, 255, 255, 0) 100%)`;
 
             ticketNumber.style = `
             background: 
@@ -226,10 +220,6 @@ function handleOrientation(event) {
             
         // Remove 
         ticket.classList.remove('no-gradient', 'gold')
-
-        spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, 
-        rgba(255,255,255,0.5) 0%, 
-        rgba(255,255,255, 0) 100%)`;
 
         // Only needed when the previous selection was 'gold'
         ticketNumber.style = `background: white;-webkit-background-clip: text;-webkit-text-fill-color: transparent;`;        
@@ -271,13 +261,6 @@ function handleOrientation(event) {
 
             // Only needed when the previous selection was 'gold'
             ticketNumber.style = `background: black;-webkit-background-clip: text;-webkit-text-fill-color: transparent;`;        
-
-            console.log(percentGamma)
-
-            // Spotlight
-            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, 
-            rgba(255,255,255,0.5) 0%, 
-            rgba(0,0,0, 1) 100%)`;
 
             break;
     } 

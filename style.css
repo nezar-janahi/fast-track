@@ -190,10 +190,6 @@ h1 {
     opacity: 0;
 }
 
-.no-gradient .spotlight {
-    mix-blend-mode: screen;
-}
-
 /* Iridescent */
 .iridescent {
     color:white;
