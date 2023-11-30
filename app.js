@@ -143,7 +143,7 @@ function handleOrientation(event) {
     }
 
     // Allow the ticket to rotate
-    ticket.style.transform = `perspective(600px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg)`;
+    //ticket.style.transform = `perspective(600px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg)`;
     
     // When tilt, increase the opacity
     if(gamma <= 0) {
@@ -220,7 +220,7 @@ function handleOrientation(event) {
         ticket.classList.remove('no-gradient', 'gold')
 
         spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, 
-        rgba(255,255,255,0.75) 0%, 
+        rgba(255,255,255,1) 0%, 
         rgba(255,255,255, 0) 100%)`;
 
         // Only needed when the previous selection was 'gold'
