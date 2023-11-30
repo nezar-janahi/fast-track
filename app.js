@@ -63,14 +63,6 @@ function onChange() {
 e.onchange = onChange;
 onChange();
 
-
-ticketHolder.addEventListener('mousemove', controlCard, false)
-
-ticketHolder.addEventListener('mouseleave', function() {
-    ticket.style.transform = `rotateX(0deg) rotateY(0deg)`
-    ticket.style.mixBlendMode = 'normal'
-})
-
 function countdown() {
     // Create a variable
     const countdown = document.querySelector('.countdown');
@@ -152,45 +144,38 @@ function handleOrientation(event) {
         gamma = -30
     }
 
+    // Allow the ticket to rotate
     ticket.style.transform = `perspective(800px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg)`;
 
+    // When tiled, increase the opacity
+    if(gamma <= 0 && beta <= 0) {
+        spotlight.style.opacity = (gamma * -1) / 30;
+    } else {
+        spotlight.style.opacity = gamma / 30;
+    }
+
+    if(beta < 0) {
+        spotlight.style.opacity = (beta * -1) / 30;
+    } else {
+        spotlight.style.opacity = beta / 30;
+    }
+
+    // Selector
     switch(onChange()) {
     
         // Gold Ticket
         case 'version2':
-            border.style.opacity = 0;
+            // Add classlist
+            ticket.classList.add('gold');
+                
+            // Remove 
+            ticket.classList.remove('no-gradient', 'iridescent')
 
-            info.style.padding = '1em 1em'
-
-            progressBarContainer.style.background = "rgba(0,0,0,0.1)"
-            progressBarFill.style.background = "#F16460"
-    
-            shiny.style.background = '#F8F6F0';
-
-            ticket.style.color = `black`
-            ticket.style.textShadow = `0px 0px transparent`;
-
-             // When tiled, increase the opacity
-             if(gamma <= 0 && beta <= 0) {
-                spotlight.style.opacity = (gamma * -1) / 30;
-            } else {
-                spotlight.style.opacity = gamma / 30;
-            }
-
-            if(beta < 0) {
-                spotlight.style.opacity = (beta * -1) / 30;
-            } else {
-                spotlight.style.opacity = beta / 30;
-            }
-
-            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 60, 30)}%, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%)`;
-
-            ticketFooter.style.borderTop = `2px dashed rgba(0,0,0,0.2)`;
-            ticketFooter.style.padding = "1em 1em"     
-            
+            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 60, 30)}%, 
+            rgba(0, 0, 0, 0.2) 0%, 
+            rgba(0, 0, 0, 0) 100%)`;
 
             ticketNumber.style = `
-            text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
             background: 
                 radial-gradient(ellipse farthest-corner at right bottom, 
                     hsl(49, 99%, ${(61 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${0 + percentage(beta, 360, 180) * 5 + "%"}, 
@@ -204,22 +189,27 @@ function handleOrientation(event) {
                     hsl(44, 54%, ${(61 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${25 + percentage(beta, 360, 180) * 5 + "%"}, 
                     hsl(42, 50%, ${(24 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${62.5 + percentage(beta, 360, 180) * 5 + "%"}, 
                     hsl(42, 50%, ${(24 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${100 + percentage(beta, 360, 180) * 5 + "%"});
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;`;        
             break;
 
     // Iridescent
       case 'version1':
-        info.style.padding = '1em 2em'
 
-        spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, rgba(255,255,255,0.5) 0%, rgba(255,255,255, 0) 100%)`;
+        // Add classlist
+        ticket.classList.add('iridescent');
+            
+        // Remove 
+        ticket.classList.remove('no-gradient', 'gold')
 
-        border.style.opacity = 1
-        progressBarContainer.style.background = "rgba(0,0,0,0.2)"
-        progressBarFill.style.background = "white"
-        ticketFooter.style = `background:transparent;border:1px solid transparent`
-        ticket.style.color = 'white'
-        ticket.style.textShadow = '0px 2px 0px rgba(0, 0, 0, 0.1)';
+        spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 180, 90)}%, 
+        rgba(255,255,255,0.5) 0%, 
+        rgba(255,255,255, 0) 100%)`;
+
+        // Only needed when the previous selection was 'gold'
+        ticketNumber.style = `background: white;-webkit-background-clip: text;-webkit-text-fill-color: transparent;`;        
+
         
        shiny.style = `       
        background: conic-gradient(from ${176.2 + gamma + "deg"} at 50% 50%, 
@@ -242,139 +232,26 @@ function handleOrientation(event) {
             hsl(${300 + beta}, 98%, 84%) 46.88%, 
             hsl(${234 + beta}, 93%, 83%) 68.23%, 
             hsl(${148 + beta}, 91%, 67%) 87.5%, 
-            hsl(${199 + beta}, 90%, 65%) 100%);     
-            
-        background-blend-mode: difference, normal;
-        mix-blend-mode: normal;
-        `
-
-            
-
-
-
-
-        ticketNumber.style = `text-shadow: 0;background: transparent; color:white;`     
+            hsl(${199 + beta}, 90%, 65%) 100%);`
         break;
 
         case 'default': 
             
-            // When tiled, increase the opacity
-            if(gamma <= 0 && beta <= 0) {
-                spotlight.style.opacity = (gamma * -1) / 30;
-            } else {
-                spotlight.style.opacity = gamma / 30;
-            }
+            // Add classlist
+            ticket.classList.add('no-gradient');
+             
+            // Remove 
+            ticket.classList.remove('iridescent', 'gold')
 
-            if(beta < 0) {
-                spotlight.style.opacity = (beta * -1) / 30;
-            } else {
-                spotlight.style.opacity = beta / 30;
-            }
+            // Only needed when the previous selection was 'gold'
+            ticketNumber.style = `background: black;-webkit-background-clip: text;-webkit-text-fill-color: transparent;`;        
 
-            
-            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 60, 30)}%, rgba(0,0,0,0.4) 0%, rgba(0, 0, 0, 0) 100%)`;
+            // Spotlight
+            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 60, 30)}%, 
+            rgba(0,0,0,0.4) 0%, 
+            rgba(0, 0, 0, 0) 100%)`;
 
-            border.style.opacity = 0
-
-            shiny.style.background = 'white';
-            ticket.style.color = `black`;
-            ticketNumber.style = `text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);`
-            ticket.style.textShadow = `0px 0px transparent`;
             break;
     } 
-
-}
- 
-
-function controlCard(e) {
-
-    // Find the pointer
-    let mouseX = e.offsetX; 
-    let mouseY = e.offsetY;
-
-    // Get percentages of x,y
-    let percentageX = e.offsetX / ticket.offsetWidth * 100;
-    let percentageY = e.offsetY / ticket.offsetHeight * 100;
-
-    let rotateY = map(mouseX, 0, 380, -25, 25);
-    let rotateX = map(mouseY, 0, 316, 25, -25);
-
-    // Rotate the card
-    ticket.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    
-    switch(onChange()) {
-        // Gold
-        case 'version2':
-            border.style.opacity = 0;
-
-            info.style.padding = '1em 1em'
-
-            progressBarContainer.style.background = "rgba(0,0,0,0.1)"
-            progressBarFill.style.background = "#F16460"
-    
-            shiny.style.background = '#F8F6F0';
-
-            ticket.style.color = `black`
-            ticket.style.textShadow = `0px 0px transparent`;
-
-            ticketFooter.style.borderTop = `2px dashed rgba(0,0,0,0.2)`;
-            ticketFooter.style.padding = "1em 1em"
-
-
-            ticketNumber.style = `
-            text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
-            background: 
-                radial-gradient(ellipse farthest-corner at right bottom, 
-                    hsl(49, 99%, ${61 + percentageY / 2 + "%"}) ${0 + percentageX / 2 + "%"}, 
-                    hsl(40, 98%, ${59 + percentageY / 2 + "%"}) ${8 + percentageX / 2 + "%"}, 
-                    hsl(41, 60%, ${39 + percentageY / 2 + "%"}) ${30 + percentageX / 2 + "%"}, 
-                    hsl(42, 49%, ${36 + percentageY / 2 + "%"}) ${40 + percentageX / 2 + "%"}, 
-                    transparent ${80 + percentageY / 2 + "%"}),
-                radial-gradient(ellipse farthest-corner at left top, 
-                    hsl(0, 0%, ${100 + percentageY / 2 + "%"}) ${0 + percentageX / 2 + "%"}, 
-                    hsl(60, 100%, ${84 + percentageY / 2 + "%"}) ${8 + percentageX / 2 + "%"}, 
-                    hsl(44, 54%, ${61 + percentageY / 2 + "%"}) ${25 + percentageX / 2 + "%"}, 
-                    hsl(42, 50%, ${24 + percentageY / 2 + "%"}) ${62.5 + percentageX / 2 + "%"}, 
-                    hsl(42, 50%, ${24 + percentageY / 2 + "%"}) ${100 + percentageX / 2 + "%"});
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;`;        
-            break;
-
-    // Iridescent
-      case 'version1':
-        info.style.padding = '1em 2em'
-
-        border.style.opacity = 1
-        progressBarContainer.style.background = "rgba(0,0,0,0.2)"
-        progressBarFill.style.background = "white"
-        ticketFooter.style = `background:transparent;border:1px solid transparent`
-        ticket.style.color = 'white'
-        ticket.style.textShadow = '0px 2px 0px rgba(0, 0, 0, 0.1)';
-        shiny.style = `
-            background: linear-gradient(252.25deg, 
-                hsl(${222 + (mouseY / 2)}, 85%, 30%) ${0 + percentageX / 2 + "%"}, 
-                hsl(${239 + (mouseY / 2)}, 88%, 30%) ${39.52 + percentageX / 2 + "%"}, 
-                hsl(${0 + (mouseY / 2)}, 0%, 30%) ${62.11 + percentageX / 2 + "%"}, 
-                hsl(${290 + (mouseY / 2)}, 88%, 30%) ${74.53 + percentageX / 2 + "%"}, 
-                hsl(${237 + (mouseY / 2)}, 86%, 30%) ${86.95 + percentageX / 2 + "%"}, 
-                hsl(${227 + (mouseY / 2)}, 89%, 30%) ${99.38 + percentageX / 2 + "%"}, 
-                hsl(${204 + (mouseY / 2)}, 52%, 30%) ${119.7 + percentageX / 2 + "%"}, 
-                hsl(${0 + (mouseY / 2)}, 0%, 30%) ${138.9 + percentageX / 2 + "%"});`
-        ticketNumber.style = `text-shadow: 0;background: transparentcolor:black;`     
-        break;
-
-        case 'default': 
-            border.style.opacity = 0
-
-            shiny.style.background = 'white';
-            ticket.style.color = `black`;
-            ticketNumber.style = `text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);`
-            ticket.style.textShadow = `0px 0px transparent`;
-            break;
-    } 
-   
-                                        
-    // Spotlight
-    //spotlight.style.background = `radial-gradient(circle at ${percentageX}% ${percentageY}%, rgba(255,255,255,0.75) 0%, rgba(255, 255, 255, 0) 100%)`;
 
 }
