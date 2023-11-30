@@ -215,7 +215,7 @@ h1 {
 
 .iridescent .footer {
     background:transparent;
-    border:1px solid transparent;
+    border-top: 2px dashed rgba(255,255,255,0.6);
     padding:1em 2em 2em 2em
 }
 
