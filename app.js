@@ -96,10 +96,6 @@ function countdown() {
 
 countdown();
 
-function map(val, minA, maxA, minB, maxB) {
-    return minB + ((val - minA) * (maxB - minB)) / (maxA - minA);
-}
-
 window.addEventListener("deviceorientation", handleOrientation, false);
 
 function percentage(value, max, min) {
@@ -129,8 +125,10 @@ function phoneStandingUp(value) {
         return false
     }
 }
+  
 
 function handleOrientation(event) {
+    // Device Orientation Values
     const alpha = event.alpha;
     const beta = event.beta;
     const gamma = event.gamma;
@@ -146,18 +144,18 @@ function handleOrientation(event) {
 
     // Allow the ticket to rotate
     ticket.style.transform = `perspective(800px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg)`;
-
+    
     // When tilt, increase the opacity
-    if(gamma <= 0 && beta <= 0) {
-        spotlight.style.opacity = (gamma * -1) / 30;
+    if(gamma <= 0) {
+        spotlight.style.opacity = (gamma * -1) / 120;
     } else {
-        spotlight.style.opacity = gamma / 30;
+        spotlight.style.opacity = gamma / 120;
     }
 
     if(beta < 0) {
-        spotlight.style.opacity = (beta * -1) / 30;
+        spotlight.style.opacity = (beta * -1) / 120;
     } else {
-        spotlight.style.opacity = beta / 30;
+        spotlight.style.opacity = beta / 120;
     }
 
     // Selector
@@ -248,9 +246,31 @@ function handleOrientation(event) {
             // Only needed when the previous selection was 'gold'
             ticketNumber.style = `background: black;-webkit-background-clip: text;-webkit-text-fill-color: transparent;`;        
 
+            //Turn the value into a positive value, otherwise add
+            if(gamma <= -0.000001 ) {
+                positiveValueGamma = ((gamma * -1) - 30) * -1 ;
+            } else {
+                positiveValueGamma = gamma + 30;
+            }
+
+             //Turn the value into a positive value, otherwise add
+             if(beta <= -0.000001 ) {
+                positiveValueBeta = ((beta * -1) - 30) * -1 ;
+            } else {
+                positiveValueBeta = beta + 30;
+            }
+
+            // Make it a percentage
+            let percentGamma = (positiveValueGamma / 60) * 100
+            let percentBeta = (positiveValueBeta / 60) * 100
+
+            console.log("percentGamma: " + percentGamma)
+            console.log("percentBeta: " + percentBeta)
+
+
             // Spotlight
-            spotlight.style.background = `radial-gradient(circle at ${percentage(gamma, 60, 30)}% ${percentage(beta, 60, 30)}%, 
-            rgba(0,0,0,0.4) 0%, 
+            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, 
+            rgba(0,0,0,1) 0%, 
             rgba(0, 0, 0, 0) 100%)`;
 
             break;
