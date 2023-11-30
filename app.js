@@ -10,6 +10,9 @@
    let border = document.querySelector('.border');
    let info = document.querySelector('.info')
  
+   let enable3d = document.querySelector('#enable3d');
+
+
  
  /* Time List */
  let updateTimeList = [
@@ -142,8 +145,14 @@ function handleOrientation(event) {
         gamma = -30
     }
 
+    console.log(enable3d.checked)
+
     // Allow the ticket to rotate
-    //ticket.style.transform = `perspective(600px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg)`;
+    if(enable3d.checked) {
+        ticket.style.transform = `perspective(600px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg)`;
+    } else {
+        ticket.style.transform = `perspective(600px) rotateX(0deg) rotateY(0deg)`;
+    }
     
     // When tilt, increase the opacity
     if(gamma <= 0) {
