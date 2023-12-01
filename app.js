@@ -120,14 +120,6 @@ function percentage(value, max, min) {
     // return value
     return percent;
 }
-
-function phoneStandingUp(value) {
-    if(value >= 70 && value <= 110) {
-        return true
-    } else {
-        return false
-    }
-}
   
 
 function handleOrientation(event) {
@@ -137,13 +129,9 @@ function handleOrientation(event) {
     const gamma = event.gamma;
 
     // Limit the gamma to [-30, 30] so that it doesn't rotate too much
-    if(gamma > 30) {
-        gamma = 30
-    }
+    gamma > 30 ? gamma = 30 : null;
+    gamma < -30 ? gamma = -30 : null;
 
-    if(gamma < -30) {
-        gamma = -30
-    }
 
     // Allow the ticket to rotate
     if(enable3d.checked) {
@@ -153,11 +141,7 @@ function handleOrientation(event) {
     }
     
     // When tilt, increase the opacity
-    if(beta < 0) {
-        spotlight.style.opacity = (beta * -1) / 30;
-    } else {
-        spotlight.style.opacity = beta / 30;
-    }
+    //beta < 0 ? spotlight.style.opacity = (beta * -1) / 30 : spotlight.style.opacity = beta / 30;
 
     //Turn the value into a positive value, otherwise add
     if(gamma <= -0.000001 ) {
@@ -178,20 +162,21 @@ function handleOrientation(event) {
     let percentBeta = (positiveValueBeta / 60) * 100
 
     // Spotlight
-    spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, 
-        rgba(0,0,0,0.5) 0%, 
-        rgba(255,255,255,0.1) 100%)`;
+    //spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.1) 100%)`;
 
     // Selector
     switch(onChange()) {
     
         // Gold Ticket
-        case 'version2':
+        case 'gold-ticket':
             // Add classlist
             ticket.classList.add('gold');
                 
             // Remove 
-            ticket.classList.remove('no-gradient', 'iridescent')
+            ticket.classList.remove('no-gradient', 'iridescent');
+
+            // Spotlight
+            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, white 0%, black  50%)`;
 
             ticketNumber.style = `
             background: 
@@ -213,7 +198,7 @@ function handleOrientation(event) {
             break;
 
     // Iridescent
-      case 'version1':
+      case 'iridescent-dark':
 
         // Add classlist
         ticket.classList.add('iridescent');
