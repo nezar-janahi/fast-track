@@ -9,6 +9,7 @@
    let progressBarFill = document.querySelector('.fill');
    let border = document.querySelector('.border');
    let info = document.querySelector('.info')
+   let noise = document.querySelector('.noise');
  
    let enable3d = document.querySelector('#enable3d');
 
@@ -176,7 +177,7 @@ function handleOrientation(event) {
             ticket.classList.remove('no-gradient', 'iridescent');
 
             // Spotlight
-            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, white 0%, black  50%)`;
+            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(0,0,0,1) 0%, #F8F6F0 50%)`;
 
             ticketNumber.style = `
             background: 
@@ -208,6 +209,9 @@ function handleOrientation(event) {
 
         // Only needed when the previous selection was 'gold'
         ticketNumber.style = `background: white;-webkit-background-clip: text;-webkit-text-fill-color: transparent;`;        
+
+        // Spotlight
+        spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.1) 100%)`;
 
         
        shiny.style = `       
@@ -243,6 +247,9 @@ function handleOrientation(event) {
              
             // Remove 
             ticket.classList.remove('iridescent', 'gold')
+
+            // Spotlight
+            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.1) 100%)`;
 
             // Only needed when the previous selection was 'gold'
             ticketNumber.style = `background: black;-webkit-background-clip: text;-webkit-text-fill-color: transparent;`;        

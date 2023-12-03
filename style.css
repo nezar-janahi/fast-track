@@ -1,7 +1,10 @@
 :root {
 
+    /* 
+    --glitter: url('img/noise-yellow.png')
+    */
     --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png");
-  
+ 
   }
 
 * {
@@ -67,37 +70,14 @@ h1 {
     overflow: hidden;
 }
 
-.ticket:before {
 
-    content: "";
-    inset: 0;
-    position: absolute;
-  
-    background-image: var(--glitter), var(--glitter),
-      linear-gradient(120deg, black 25%, white, black 75%);
-    background-size: 100% 100%, 80% 80%, 200% 200%;
-    background-blend-mode: multiply, multiply, overlay;
-    background-position: 50% 50%, 50% 50%, 50% 50%;
-  
-    mix-blend-mode: color-dodge;
-    filter: brightness(2) contrast(0.8);
-    
-  }
-
-/*
 .ticket .noise {
-    z-index: -1;
 
-    background-image: var(--glitter), var(--glitter);
-    background-blend-mode: multiply, multiply;
-    background-size: 100% 100%, 80% 80%;
-    background-position: 50% 50%, 50% 50%;
-   
-    mix-blend-mode: darken;    
-    
+    background: var(--glitter), #FDD835;
+    mix-blend-mode: overlay;
+    background-size: 100% 100%;
+
 }
-*/
-
 
 .ticket .top {
     padding:2em;
@@ -128,21 +108,10 @@ h1 {
 }
 
 .ticket .content {
-    z-index: 10 !important;
     display: flex;
     flex-direction: column;
     height:100%;
-}
-
-/*
-.ticket .spotlight {
-    mix-blend-mode: color-burn;
-    z-index: 3;
-}
-*/
-.ticket .spotlight {
-    z-index: 3;
-    opacity: 0;
+    z-index: 10;
 }
 
 
@@ -152,7 +121,10 @@ h1 {
 
 .ticket .base {
     background-size: cover;
-    z-index:-1;
+}
+
+.ticket .spotlight {
+    mix-blend-mode: normal;
 }
 
 .ticket .border {
@@ -224,9 +196,11 @@ h1 {
     background:black;
 }
 
-.no-gradient .border {
+.no-gradient .border, 
+.no-gradient .noise {
     opacity: 0;
 }
+
 
 /* Iridescent */
 .iridescent {
@@ -284,8 +258,7 @@ h1 {
 }
 
 .gold .shiny {
-    /*background: #F8F6F0 !important;*/
-    background : #FDD835 !important
+    background: #F8F6F0 !important;
 }
 
 .gold .footer {
@@ -293,6 +266,9 @@ h1 {
     padding: 1em 2em;
 }
 
+.gold .spotlight {
+    mix-blend-mode: overlay;
+}
 
 /************************** 
  * Buttons, Form and list *  
