@@ -18,30 +18,21 @@
    // Require Apple's requirement
    function requestOrientationPermission(){
 
-    alert(DeviceOrientationEvent.requestPermission)
+        if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
 
+            DeviceOrientationEvent.requestPermission().then(permissionState => {
+                if (permissionState === 'granted') {
+                    window.addEventListener("deviceorientation", handleOrientation, false);
+                    applePopup.style.display = 'none';
+                }
+            }).catch(console.error);
 
-    if (typeof DeviceMotionEvent.requestPermission === 'function') {
-        // iOS 13+
-        DeviceMotionEvent.requestPermission().then(response => {
-            if (response == 'granted') {
-                window.addEventListener("deviceorientation", handleOrientation, false);
-            }
-        })
-        .catch(console.error)
-      } else {
-        // non iOS 13+
-        DeviceOrientationEvent.requestPermission().then(response => {
-            if (response == 'granted') {
-                window.addEventListener("deviceorientation", handleOrientation, false);
-            }
-        })
-        .catch(console.error)
-      } 
-
-      applePopup.style.opacity = 0;
-
-}
+        } else {
+            // handle regular non iOS 13+ devices
+            window.addEventListener("deviceorientation", handleOrientation, false);
+            applePopup.style.display = 'none';
+        }
+    }
 
 
 
