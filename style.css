@@ -1,10 +1,5 @@
 :root {
-
-    /* 
-    --glitter: url('img/noise-yellow.png')
-    */
-    --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png");
- 
+    --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png"); 
   }
 
 * {

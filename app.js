@@ -324,7 +324,10 @@ function handleOrientation(event) {
             spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,1) 0%, rgba(0,0,0,0.2) 100%)`;
 
             // Only needed when the previous selection was 'gold'
-            ticketNumber.style = `background: black;-webkit-background-clip: text;-webkit-text-fill-color: transparent;`;        
+            ticketNumber.style = `
+                background: black;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;`;        
 
             break;
     } 
