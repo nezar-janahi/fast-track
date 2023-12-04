@@ -196,53 +196,105 @@ h1 {
 }
 
 
-/* Iridescent */
-.iridescent {
+/* Iridescent Dark*/
+.iridescent-dark {
     color:white;
     text-shadow: 0px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
-.iridescent .border {
+.iridescent-dark .border {
     opacity:1;
 }
 
-.iridescent .progressbar {
+.iridescent-dark .progressbar {
     background: rgba(0,0,0,0.4)
 }
 
-.iridescent .progressbar .fill {
+.iridescent-dark .progressbar .fill {
     background:white;
 }
 
-.iridescent .footer {
+.iridescent-dark .footer {
     background:transparent;
     border-top: 2px dashed rgba(255,255,255,0.6);
     padding:1em 2em 2em 2em
 }
 
-.iridescent .ticketNumber {
+.iridescent-dark .ticketNumber {
     text-shadow: 0;
     color:white;
 }
 
-.iridescent .spotlight {
+.iridescent-dark .spotlight {
     opacity: 1;
 }
 
-.iridescent .shiny {
+.iridescent-dark .shiny {
     background-blend-mode: difference, normal;
     mix-blend-mode: normal;
 }
 
-.iridescent .noise {
+.iridescent-dark .noise {
     opacity: 1;
-    /*background-image: var(--glitter), var(--glitter), linear-gradient(120deg, black 25%, white, black 75%);*/
-  background-size: 100% 100%, 200% 200%;
-  background-blend-mode: multiply, overlay;
-  background-position: 50% 50%, 50% 50%;
+    background-size: 100% 100%, 200% 200%;
+    background-blend-mode: multiply, overlay;
+    background-position: 50% 50%, 50% 50%;
 
-  mix-blend-mode: color-dodge;
+    mix-blend-mode: color-dodge;
 }
+
+/* Iridescent Light */
+.iridescent-light .shiny {
+    background-blend-mode: screen, difference, normal;
+    mix-blend-mode: normal;
+}
+
+.iridescent-light {
+    color:white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.iridescent-light .border {
+    opacity:0;
+}
+
+.iridescent-light .progressbar {
+    background: rgba(0,0,0,0.4)
+}
+
+.iridescent-light .progressbar .fill {
+    background-color: white;
+}
+
+.iridescent-light .footer {
+    background:transparent;
+    border-top: 2px dashed rgba(255,255,255,0.6);
+    padding:1em 2em 1em 2em
+}
+
+.iridescent-light .spotlight {
+    opacity: 1;
+}
+
+.iridescent-light .shiny {
+    background-blend-mode: screen, difference, normal;
+    mix-blend-mode: normal;
+}
+
+.iridescent-light .noise {
+    opacity: 1;
+    background-size: 100% 100%, 200% 200%;
+    background-blend-mode: overlay, soft-light;
+    background-position: 50% 50%, 50% 50%;
+
+    mix-blend-mode: soft-light;
+}
+
+
+
+
+
+
 
 /* Gold */
 .gold {

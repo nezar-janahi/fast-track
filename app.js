@@ -174,7 +174,7 @@ function handleOrientation(event) {
             ticket.classList.add('gold');
                 
             // Remove 
-            ticket.classList.remove('no-gradient', 'iridescent');
+            ticket.classList.remove('no-gradient', 'iridescent-dark', 'iridescent-light');
 
             // Spotlight
             spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(0,0,0,1) 0%, #F8F6F0 100%)`;
@@ -192,10 +192,10 @@ function handleOrientation(event) {
       case 'iridescent-dark':
 
         // Add classlist
-        ticket.classList.add('iridescent');
+        ticket.classList.add('iridescent-dark');
             
         // Remove 
-        ticket.classList.remove('no-gradient', 'gold')
+        ticket.classList.remove('no-gradient', 'gold', 'iridescent-light')
 
         // Only needed when the previous selection was 'gold'
         ticketNumber.style = `background: white;-webkit-background-clip: text;-webkit-text-fill-color: transparent;`;        
@@ -207,7 +207,7 @@ function handleOrientation(event) {
         noise.style = `
         background-image: 
             url('https://assets.codepen.io/13471/silver-glitter-background.png'), 
-            radial-gradient(${percentGamma + "%"} ${percentGamma + "%"} at ${percentBeta + "%"} ${percentBeta + "%"}, #FFFFFF 0%, #000000 100%);
+            radial-gradient(50% 50% at ${percentGamma + "%"} ${percentBeta + "%"}, #FFFFFF 0%, #000000 100%);
         `
         
        shiny.style = `       
@@ -234,6 +234,61 @@ function handleOrientation(event) {
             hsl(${199 + (beta * 2)}, 90%, 65%) 100%);`
         break;
 
+        case 'iridescent-light':
+
+        // Add classlist
+        ticket.classList.add('iridescent-light');
+            
+        // Remove 
+        ticket.classList.remove('no-gradient', 'gold', 'iridescent-dark')
+
+        // Only needed when the previous selection was 'gold'
+        ticketNumber.style = `background: white;-webkit-background-clip: text;-webkit-text-fill-color: transparent;`;        
+
+        // Spotlight
+        spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.1) 100%)`;
+
+        // Noise
+        noise.style = `background-image: url('https://assets.codepen.io/13471/silver-glitter-background.png'), radial-gradient(50% 50% at ${percentGamma + "%"} ${percentBeta + "%"}, #FFFFFF 0%, #000000 50%);`
+        
+       shiny.style = `background: conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%, 
+        hsl(0, 0%, 0%) ${-24.66 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 100%) ${0.25 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 0%) ${50.63 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 0%) ${51.97 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 100%) ${88.12 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 0%) ${142.5 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 100%) ${196.87 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 0%) ${256.87 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 100%) ${300 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 0%) ${335.2 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 0%) ${335.34 + (gamma / 8) + "deg"} , 
+        hsl(0, 0%, 100%) ${360.25 + (gamma / 8) + "deg"}), 
+        
+        conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%, 
+        hsl(0, 0%, 0%) ${-24.66 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 100%) ${0.25 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 0%) ${50.63 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 0%) ${51.97 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 100%) ${88.12 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 0%) ${142.5 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 100%) ${196.87 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 0%) ${256.87 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 100%) ${300 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 0%) ${335.2 + (gamma / 8) + "deg"}, 
+        hsl(0, 0%, 0%) ${335.34 + (gamma / 8) + "deg"} , 
+        hsl(0, 0%, 100%) ${360.25 + (gamma / 8) + "deg"}), 
+
+        radial-gradient(95.11% 95.11% at 36.64% 4.89%, 
+            hsl(${178 + (beta * 2)}, 66%, 49%) 0%, 
+            hsl(${69 + (beta * 2)}, 89%, 68%) 22.92%, 
+            hsl(${300 + (beta * 2)}, 98%, 84%) 46.88%, 
+            hsl(${234 + (beta * 2)}, 93%, 83%) 68.23%, 
+            hsl(${148 + (beta * 2)}, 91%, 67%) 87.5%, 
+            hsl(${199 + (beta * 2)}, 90%, 65%) 100%);`;
+       
+       break;
+
         //
 
         case 'default': 
@@ -242,7 +297,7 @@ function handleOrientation(event) {
             ticket.classList.add('no-gradient');
              
             // Remove 
-            ticket.classList.remove('iridescent', 'gold')
+            ticket.classList.remove('iridescent-light', 'iridescent-dark', 'gold')
 
             // Spotlight
             spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,0.5) 0%, rgba(0,0,0,0.1) 100%)`;
