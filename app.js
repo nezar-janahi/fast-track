@@ -177,25 +177,15 @@ function handleOrientation(event) {
             ticket.classList.remove('no-gradient', 'iridescent');
 
             // Spotlight
-            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(0,0,0,1) 0%, #F8F6F0 50%)`;
+            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(0,0,0,1) 0%, #F8F6F0 100%)`;
 
             ticketNumber.style = `
             background: 
-                radial-gradient(ellipse farthest-corner at right bottom, 
-                    hsl(49, 99%, ${(61 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${0 + percentage(beta, 360, 180) * 5 + "%"}, 
-                    hsl(40, 98%, ${(59 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${8 + percentage(beta, 360, 180) * 5 + "%"}, 
-                    hsl(41, 60%, ${(39 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${30 + percentage(beta, 360, 180) * 5 + "%"}, 
-                    hsl(42, 49%, ${(36 + percentage(gamma, 180, 90)) / 1.5 + "%"}) ${40 + percentage(beta, 360, 180) * 5 + "%"}, 
-                    transparent ${(80 + percentage(gamma, 180, 90)) / 1.5 + "%"}),
-                radial-gradient(ellipse farthest-corner at left top, 
-                    hsl(0, 0%, ${(100 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${0 + percentage(beta, 360, 180) * 5 + "%"}, 
-                    hsl(60, 100%, ${(84 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${8 + percentage(beta, 360, 180) * 5 + "%"}, 
-                    hsl(44, 54%, ${(61 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${25 + percentage(beta, 360, 180) * 5 + "%"}, 
-                    hsl(42, 50%, ${(24 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${62.5 + percentage(beta, 360, 180) * 5 + "%"}, 
-                    hsl(42, 50%, ${(24 + percentage(gamma, 180, 90)) / 1.5  + "%"}) ${100 + percentage(beta, 360, 180) * 5 + "%"});
+                radial-gradient(ellipse 100% 100% at ${100 - percentGamma}% ${100 - percentBeta}%, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                radial-gradient(ellipse 100% 100% at ${percentGamma}% ${percentBeta}%, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
             background-clip: text;
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;`;        
+            -webkit-text-fill-color: transparent;`        
             break;
 
     // Iridescent
@@ -213,6 +203,12 @@ function handleOrientation(event) {
         // Spotlight
         spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.1) 100%)`;
 
+        // Noise
+        noise.style = `
+        background-image: 
+            url('https://assets.codepen.io/13471/silver-glitter-background.png'), 
+            radial-gradient(${percentGamma + "%"} ${percentGamma + "%"} at ${percentBeta + "%"} ${percentBeta + "%"}, #FFFFFF 0%, #000000 100%);
+        `
         
        shiny.style = `       
        background: conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%, 
@@ -249,7 +245,7 @@ function handleOrientation(event) {
             ticket.classList.remove('iridescent', 'gold')
 
             // Spotlight
-            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.1) 100%)`;
+            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,0.5) 0%, rgba(0,0,0,0.1) 100%)`;
 
             // Only needed when the previous selection was 'gold'
             ticketNumber.style = `background: black;-webkit-background-clip: text;-webkit-text-fill-color: transparent;`;        
