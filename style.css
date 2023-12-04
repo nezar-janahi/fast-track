@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 :root {
     --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png"); 
   }
@@ -19,8 +26,13 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .apple-request {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     position: absolute;
     top:0;
     left:0;
@@ -32,11 +44,15 @@ h1,h2,h3,h4,h5,h6 {
 
 .apple-request .content{
     margin:auto;
-    color:white;
     width:300px;
     text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     color:white
 }
 
@@ -64,8 +80,13 @@ h1 {
 .container {
     margin:0 auto;
     width: 380px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 .text-bold {
@@ -87,11 +108,18 @@ h1 {
     position: relative;
     width:380px;
     height:380px;
-    filter: drop-shadow(0px 167px 67px rgba(0, 0, 0, 0.01)) 
+    -webkit-filter: drop-shadow(0px 167px 67px rgba(0, 0, 0, 0.01)) 
+            drop-shadow(0px 94px 56px rgba(0, 0, 0, 0.05)) 
+            drop-shadow(0px 42px 42px rgba(0, 0, 0, 0.09)) 
+            drop-shadow(0px 10px 23px rgba(0, 0, 0, 0.1));
+            filter: drop-shadow(0px 167px 67px rgba(0, 0, 0, 0.01)) 
             drop-shadow(0px 94px 56px rgba(0, 0, 0, 0.05)) 
             drop-shadow(0px 42px 42px rgba(0, 0, 0, 0.09)) 
             drop-shadow(0px 10px 23px rgba(0, 0, 0, 0.1));
     border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+
     text-align: center;
     overflow: hidden;
 }
@@ -103,7 +131,9 @@ h1 {
 
 .ticket .ticketNumber {
     font-size: 3.4em;
-    flex-grow: 1;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
 }
 
 .ticket img {
@@ -124,12 +154,18 @@ h1 {
     left:0;
     width:100%; 
     height:100%;
-    clip-path: path("M0 8.00001C0 3.58173 3.58172 0 8 0H372C376.418 0 380 3.58172 380 8V178C373.373 178 368 183.373 368 190C368 196.627 373.373 202 380 202V372C380 376.418 376.418 380 372 380H8.00001C3.58173 380 0 376.418 0 372V202C6.62742 202 12 196.627 12 190C12 183.373 6.62742 178 0 178V8.00001Z");
+    -webkit-clip-path: path("M0 8.00001C0 3.58173 3.58172 0 8 0H372C376.418 0 380 3.58172 380 8V178C373.373 178 368 183.373 368 190C368 196.627 373.373 202 380 202V372C380 376.418 376.418 380 372 380H8.00001C3.58173 380 0 376.418 0 372V202C6.62742 202 12 196.627 12 190C12 183.373 6.62742 178 0 178V8.00001Z");
+            clip-path: path("M0 8.00001C0 3.58173 3.58172 0 8 0H372C376.418 0 380 3.58172 380 8V178C373.373 178 368 183.373 368 190C368 196.627 373.373 202 380 202V372C380 376.418 376.418 380 372 380H8.00001C3.58173 380 0 376.418 0 372V202C6.62742 202 12 196.627 12 190C12 183.373 6.62742 178 0 178V8.00001Z");
 }
 
 .ticket .content {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     height:100%;
     z-index: 10 !important;
 }
@@ -154,9 +190,16 @@ h1 {
 }
 
 .ticket .info {
+    display:-webkit-box;
+    display:-ms-flexbox;
     display:flex;
-    flex-direction: row;
-    justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     padding:1em 2em;
 }
 
@@ -170,15 +213,27 @@ h1 {
 
 .ticket .footer {
     border-top: 2px dashed rgba(0,0,0,0.2);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     padding:1em 2em;
 }
 
 .ticket .time-left {
+    display:-webkit-box;
+    display:-ms-flexbox;
     display:flex;
-    flex-direction: row;
-    justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 
 .ticket .progressbar {
@@ -357,6 +412,8 @@ h1 {
 }
 
 .gold .noise {
+    background-image: var(--glitter), -webkit-gradient(linear, left top, left bottom, from(#FDD835), to(#FDD835));
+    background-image: var(--glitter), -o-linear-gradient(#FDD835 0%, #FDD835 100%);
     background-image: var(--glitter), linear-gradient(#FDD835 0%, #FDD835 100%);
     background-size: 100% 100%;
     
@@ -376,16 +433,29 @@ form {
 }
 
 .tab {
+    display:-webkit-box;
+    display:-ms-flexbox;
     display:flex;
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
     border-bottom:1px solid rgba(0,0,0,0.2)
 }
 
 .tab .item {
-    flex-basis: 33.33%;
+    -ms-flex-preferred-size: 33.33%;
+        flex-basis: 33.33%;
+    display:-webkit-box;
+    display:-ms-flexbox;
     display:flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     padding:1em;
     border-bottom:4px solid transparent;
     font-size: 12px;
@@ -402,15 +472,29 @@ form {
 }
 
 .list {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 .list .item {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     border-bottom:1px solid rgba(0,0,0,0.2);
     padding: 1em;
 }
@@ -422,10 +506,19 @@ form {
 }
 
 .button {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     padding: 12px 24px;
     border-radius: 80px;
     font-weight: 600;
@@ -435,10 +528,12 @@ form {
 
 .button.fastTrack {
     background: #67C381;
-    box-shadow: 0px 12px 5px rgba(103, 195, 129, 0.04), 0px 7px 4px rgba(103, 195, 129, 0.12), 0px 3px 3px rgba(103, 195, 129, 0.2), 0px 1px 2px rgba(103, 195, 129, 0.24), 0px 0px 0px rgba(103, 195, 129, 0.24);
+    -webkit-box-shadow: 0px 12px 5px rgba(103, 195, 129, 0.04), 0px 7px 4px rgba(103, 195, 129, 0.12), 0px 3px 3px rgba(103, 195, 129, 0.2), 0px 1px 2px rgba(103, 195, 129, 0.24), 0px 0px 0px rgba(103, 195, 129, 0.24);
+            box-shadow: 0px 12px 5px rgba(103, 195, 129, 0.04), 0px 7px 4px rgba(103, 195, 129, 0.12), 0px 3px 3px rgba(103, 195, 129, 0.2), 0px 1px 2px rgba(103, 195, 129, 0.24), 0px 0px 0px rgba(103, 195, 129, 0.24);
 }
 
 .button.primary {
     background: #4141D6;
-    box-shadow: 0px 12px 5px rgba(65, 65, 214, 0.04), 0px 7px 4px rgba(65, 65, 214, 0.12), 0px 3px 3px rgba(65, 65, 214, 0.2), 0px 1px 2px rgba(65, 65, 214, 0.24), 0px 0px 0px rgba(65, 65, 214, 0.24);
+    -webkit-box-shadow: 0px 12px 5px rgba(65, 65, 214, 0.04), 0px 7px 4px rgba(65, 65, 214, 0.12), 0px 3px 3px rgba(65, 65, 214, 0.2), 0px 1px 2px rgba(65, 65, 214, 0.24), 0px 0px 0px rgba(65, 65, 214, 0.24);
+            box-shadow: 0px 12px 5px rgba(65, 65, 214, 0.04), 0px 7px 4px rgba(65, 65, 214, 0.12), 0px 3px 3px rgba(65, 65, 214, 0.2), 0px 1px 2px rgba(65, 65, 214, 0.24), 0px 0px 0px rgba(65, 65, 214, 0.24);
 }
