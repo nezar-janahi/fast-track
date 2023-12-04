@@ -18,9 +18,9 @@
    // Require Apple's requirement
    function requestOrientationPermission(){
 
-    alert(DeviceMotionEvent.requestPermission)
+    alert(DeviceOrientationEvent.requestPermission)
 
-    
+
     if (typeof DeviceMotionEvent.requestPermission === 'function') {
         // iOS 13+
         DeviceMotionEvent.requestPermission().then(response => {
