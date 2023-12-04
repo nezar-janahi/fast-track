@@ -299,7 +299,7 @@ h1 {
 /* Gold */
 .gold {
     text-shadow: 0px 0px transparent;
-    color:black;
+    color:hsl(49, 98%, 18%);
 }
 .gold .border {
     opacity: 0;
@@ -331,9 +331,12 @@ h1 {
 }
 
 .gold .noise {
-    background: var(--glitter), #FDD835;
-    mix-blend-mode: overlay;
+    background-image: var(--glitter), linear-gradient(#FDD835 0%, #FDD835 100%);
     background-size: 100% 100%;
+    
+
+    mix-blend-mode: overlay;
+
 }
 
 /************************** 
