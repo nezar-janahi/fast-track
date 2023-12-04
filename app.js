@@ -13,6 +13,37 @@
  
    let enable3d = document.querySelector('#enable3d');
 
+   let applePopup = document.querySelector('.apple-request')
+
+   // Require Apple's requirement
+   function requestOrientationPermission(){
+
+    alert(DeviceMotionEvent.requestPermission)
+
+    
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+        // iOS 13+
+        DeviceMotionEvent.requestPermission().then(response => {
+            if (response == 'granted') {
+                window.addEventListener("deviceorientation", handleOrientation, false);
+            }
+        })
+        .catch(console.error)
+      } else {
+        // non iOS 13+
+        DeviceOrientationEvent.requestPermission().then(response => {
+            if (response == 'granted') {
+                window.addEventListener("deviceorientation", handleOrientation, false);
+            }
+        })
+        .catch(console.error)
+      } 
+
+      applePopup.style.opacity = 0;
+
+}
+
+
 
  
  /* Time List */
@@ -100,7 +131,6 @@ function countdown() {
 
 countdown();
 
-window.addEventListener("deviceorientation", handleOrientation, false);
 
 function percentage(value, max, min) {
     // gamma [-90 to 90] = 180
