@@ -207,7 +207,7 @@ function handleOrientation(event) {
         noise.style = `
         background-image: 
             url('https://assets.codepen.io/13471/silver-glitter-background.png'), 
-            radial-gradient(50% 50% at ${percentGamma + "%"} ${percentBeta + "%"}, #FFFFFF 0%, #000000 100%);
+            radial-gradient(50% 50% at ${100-percentGamma + "%"} ${100-percentBeta + "%"}, #FFFFFF 0%, #000000 100%);
         `
         
        shiny.style = `       
@@ -249,7 +249,7 @@ function handleOrientation(event) {
         spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.1) 100%)`;
 
         // Noise
-        noise.style = `background-image: url('https://assets.codepen.io/13471/silver-glitter-background.png'), radial-gradient(50% 50% at ${percentGamma + "%"} ${percentBeta + "%"}, #FFFFFF 0%, #000000 50%);`
+        noise.style = `background-image: url('https://assets.codepen.io/13471/silver-glitter-background.png'), radial-gradient(50% 50% at ${100-percentGamma + "%"} ${100-percentBeta + "%"}, #FFFFFF 0%, #000000 50%);`
         
        shiny.style = `background: conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%, 
         hsl(0, 0%, 0%) ${-24.66 + (gamma / 8) + "deg"}, 
