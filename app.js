@@ -300,7 +300,7 @@ function handleOrientation(event) {
             ticket.classList.remove('iridescent-light', 'iridescent-dark', 'gold')
 
             // Spotlight
-            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,0.5) 0%, rgba(0,0,0,0.4) 100%)`;
+            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,0.5) 0%, rgba(0,0,0,1) 100%)`;
 
             // Only needed when the previous selection was 'gold'
             ticketNumber.style = `background: black;-webkit-background-clip: text;-webkit-text-fill-color: transparent;`;        
