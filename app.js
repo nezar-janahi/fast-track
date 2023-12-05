@@ -89,7 +89,7 @@ function onChange() {
     var text = e.options[e.selectedIndex].text;
     return value;
 }
-e.onchange = onChange;
+e.onchange = handleOrientation;
 onChange();
 
 function countdown() {
