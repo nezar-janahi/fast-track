@@ -5,6 +5,14 @@
 * Browsers: last 4 version
 */
 
+.test {
+    position: fixed;
+    bottom:1em;
+    right:1em;
+    background:rgba(0,0,0,0.2);
+    padding:1em;
+}
+
 :root {
     --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png"); 
   }
@@ -122,7 +130,6 @@ h1 {
     margin:2em 0 1em 0;
     width:380px;
     height:auto;
-    background:red
 }
 
 .ticket {

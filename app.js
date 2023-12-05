@@ -150,6 +150,10 @@ function handleOrientation(event) {
     const beta = event.beta;
     const gamma = event.gamma;
 
+    // Dev purposes
+    document.querySelector('#betaValue').innerHTML = beta
+    document.querySelector('#gammaValue').innerHTML = gamma
+
     // Limit the gamma to [-30, 30] so that it doesn't rotate too much
     gamma > 30 ? gamma = 30 : null;
     gamma < -30 ? gamma = -30 : null;
