@@ -153,8 +153,13 @@ function handleOrientation(event) {
     document.querySelector('#gammaValue').innerHTML = gamma
 
     // Limit the gamma to [-30, 30] so that it doesn't rotate too much
-    gamma > 30 ? gamma = 30 + alert('hi') : null;
-    gamma < -30 ? gamma = -30 : null;
+    if(gamma > 30) {
+        gamma = 30;
+    }
+
+    if(gamma < -30) {
+        gamma = -30;
+    }
 
     // Allow the ticket to rotate
     if(enable3d.checked) {
