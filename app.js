@@ -162,7 +162,7 @@ function handleOrientation(event) {
     }
 
     // Allow the ticket to rotate
-    /*
+    
     if(enable3d.checked) {
         ticket.style = `
         -webkit-transform: perspective(600px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg);
@@ -173,7 +173,7 @@ function handleOrientation(event) {
         -webkit-transform: perspective(600px) rotateX(0deg) rotateY(0deg);
                 transform: perspective(600px) rotateX(0deg) rotateY(0deg);
         `;
-    }*/
+    }
     
     // When tilt, increase the opacity
     //beta < 0 ? spotlight.style.opacity = (beta * -1) / 30 : spotlight.style.opacity = beta / 30;
@@ -418,11 +418,10 @@ background: conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%,
             ticket.classList.remove('iridescent-light', 'iridescent-dark', 'gold')
 
             // Spotlight
-            /*
             spotlight.style = `
                 background: radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,1) 0%, rgba(0,0,0,0.2) 100%);
                 background: -o-radial-gradient(${percentGamma}% ${percentBeta}%, circle, #FFFFFF 0%, rgba(0,0,0,0.2) 100%);
-            `;*/
+            `;
 
             // Only needed when the previous selection was 'gold'
             ticketNumber.style = `
