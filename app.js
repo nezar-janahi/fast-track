@@ -77,8 +77,6 @@ updateTimeList.map((e) => {
 })
 
 
-
-
 // Get Gradient Value
 var e = document.getElementById("gradientSelect");
 function onChange() {
@@ -157,7 +155,6 @@ function handleOrientation(event) {
     // Limit the gamma to [-30, 30] so that it doesn't rotate too much
     gamma > 30 ? gamma = 30 : null;
     gamma < -30 ? gamma = -30 : null;
-
 
     // Allow the ticket to rotate
     if(enable3d.checked) {
