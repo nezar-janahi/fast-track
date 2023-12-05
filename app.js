@@ -418,10 +418,11 @@ background: conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%,
             ticket.classList.remove('iridescent-light', 'iridescent-dark', 'gold')
 
             // Spotlight
+            /*
             spotlight.style = `
                 background: radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,1) 0%, rgba(0,0,0,0.2) 100%);
                 background: -o-radial-gradient(${percentGamma}% ${percentBeta}%, circle, #FFFFFF 0%, rgba(0,0,0,0.2) 100%);
-            `;
+            `;*/
 
             // Only needed when the previous selection was 'gold'
             ticketNumber.style = `
