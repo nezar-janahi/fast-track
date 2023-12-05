@@ -22,7 +22,7 @@
             // iOS 13+
             DeviceOrientationEvent.requestPermission().then(permissionState => {
                 if (permissionState === 'granted') {
-                    window.addEventListener("deviceorientation", handleOrientation, false);
+                    //window.addEventListener("deviceorientation", handleOrientation, false);
                     alert('This is a iOS Device')
                     applePopup.style.display = 'none';
                 }
