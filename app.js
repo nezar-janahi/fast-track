@@ -213,11 +213,14 @@ function handleOrientation(event) {
 
             ticketNumber.style = `
             background: 
+                -o-radial-gradient(${100 - percentGamma}% ${100 - percentBeta}%, ellipse 100% 100%, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                -o-radial-gradient(${percentGamma}% ${percentBeta}%, ellipse 100% 100%, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+            background: 
                 radial-gradient(ellipse 100% 100% at ${100 - percentGamma}% ${100 - percentBeta}%, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
                 radial-gradient(ellipse 100% 100% at ${percentGamma}% ${percentBeta}%, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
             background-clip: text;
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;`        
+            -webkit-text-fill-color: transparent;`
             break;
 
     // Iridescent
@@ -230,13 +233,22 @@ function handleOrientation(event) {
         ticket.classList.remove('no-gradient', 'gold', 'iridescent-light')
 
         // Only needed when the previous selection was 'gold'
-        ticketNumber.style = `background: white;-webkit-background-clip: text;-webkit-text-fill-color: transparent;`;        
+        ticketNumber.style = `
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;`;        
 
         // Spotlight
-        spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.1) 100%)`;
+        spotlight.style = `
+            background: -o-radial-gradient(${percentGamma}% ${percentBeta}%, circle, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.1) 100%);
+            background: radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.1) 100%)
+        `;
 
         // Noise
         noise.style = `
+        background-image: 
+            url('https://assets.codepen.io/13471/silver-glitter-background.png'), 
+            -o-radial-gradient(${100-percentGamma + "%"} ${100-percentBeta + "%"}, 50% 50%, #FFFFFF 0%, #000000 100%);
         background-image: 
             url('https://assets.codepen.io/13471/silver-glitter-background.png'), 
             radial-gradient(50% 50% at ${100-percentGamma + "%"} ${100-percentBeta + "%"}, #FFFFFF 0%, #000000 100%);
@@ -244,26 +256,50 @@ function handleOrientation(event) {
         
        shiny.style = `       
        background: conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%, 
-        hsl(0, 0%, 0%) ${-24.66 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 100%) ${0.25 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${50.63 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${51.97 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 100%) ${88.12 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${142.5 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 100%) ${196.87 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${256.87 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 100%) ${300 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${335.2 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${335.34 + (gamma / 8) + "deg"} , 
-        hsl(0, 0%, 100%) ${360.25 + (gamma / 8) + "deg"}), 
+            hsl(0, 0%, 0%) ${-24.66 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 100%) ${0.25 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 0%) ${50.63 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 0%) ${51.97 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 100%) ${88.12 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 0%) ${142.5 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 100%) ${196.87 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 0%) ${256.87 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 100%) ${300 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 0%) ${335.2 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 0%) ${335.34 + (gamma / 8) + "deg"} , 
+            hsl(0, 0%, 100%) ${360.25 + (gamma / 8) + "deg"}), 
+       
+       -o-radial-gradient(36.64% 4.89%, 
+           95.11% 95.11%, 
+           hsl(${178 + (beta * 2)}, 66%, 49%) 0%, 
+           hsl(${69 + (beta * 2)}, 89%, 68%) 22.92%, 
+           hsl(${300 + (beta * 2)}, 98%, 84%) 46.88%, 
+           hsl(${234 + (beta * 2)}, 93%, 83%) 68.23%, 
+           hsl(${148 + (beta * 2)}, 91%, 67%) 87.5%, 
+           hsl(${199 + (beta * 2)}, 90%, 65%) 100%);
         
-        radial-gradient(95.11% 95.11% at 36.64% 4.89%, 
-            hsl(${178 + (beta * 2)}, 66%, 49%) 0%, 
-            hsl(${69 + (beta * 2)}, 89%, 68%) 22.92%, 
-            hsl(${300 + (beta * 2)}, 98%, 84%) 46.88%, 
-            hsl(${234 + (beta * 2)}, 93%, 83%) 68.23%, 
-            hsl(${148 + (beta * 2)}, 91%, 67%) 87.5%, 
-            hsl(${199 + (beta * 2)}, 90%, 65%) 100%);`
+        background: conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%, 
+            hsl(0, 0%, 0%) ${-24.66 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 100%) ${0.25 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 0%) ${50.63 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 0%) ${51.97 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 100%) ${88.12 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 0%) ${142.5 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 100%) ${196.87 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 0%) ${256.87 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 100%) ${300 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 0%) ${335.2 + (gamma / 8) + "deg"}, 
+            hsl(0, 0%, 0%) ${335.34 + (gamma / 8) + "deg"} , 
+            hsl(0, 0%, 100%) ${360.25 + (gamma / 8) + "deg"}), 
+       
+       radial-gradient(95.11% 95.11% at 36.64% 4.89%, 
+           hsl(${178 + (beta * 2)}, 66%, 49%) 0%, 
+           hsl(${69 + (beta * 2)}, 89%, 68%) 22.92%, 
+           hsl(${300 + (beta * 2)}, 98%, 84%) 46.88%, 
+           hsl(${234 + (beta * 2)}, 93%, 83%) 68.23%, 
+           hsl(${148 + (beta * 2)}, 91%, 67%) 87.5%, 
+           hsl(${199 + (beta * 2)}, 90%, 65%) 100%);
+       `
         break;
 
         case 'iridescent-light':
@@ -275,49 +311,95 @@ function handleOrientation(event) {
         ticket.classList.remove('no-gradient', 'gold', 'iridescent-dark')
 
         // Only needed when the previous selection was 'gold'
-        ticketNumber.style = `background: white;-webkit-background-clip: text;-webkit-text-fill-color: transparent;`;        
+        ticketNumber.style = `
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;`;        
 
         // Spotlight
-        spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.1) 100%)`;
+        spotlight.style = `
+            background: -o-radial-gradient(${percentGamma}% ${percentBeta}%, circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.1) 100%);
+            background: radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.1) 100%);
+        `;
 
         // Noise
-        noise.style = `background-image: url('https://assets.codepen.io/13471/silver-glitter-background.png'), radial-gradient(50% 50% at ${100-percentGamma + "%"} ${100-percentBeta + "%"}, #FFFFFF 0%, #000000 50%);`
+        noise.style = `
+        background-image: url('https://assets.codepen.io/13471/silver-glitter-background.png'), -o-radial-gradient(${100-percentGamma + "%"} ${100-percentBeta + "%"}, 50% 50%, #FFFFFF 0%, #000000 50%);
+        background-image: url('https://assets.codepen.io/13471/silver-glitter-background.png'), radial-gradient(50% 50% at ${100-percentGamma + "%"} ${100-percentBeta + "%"}, #FFFFFF 0%, #000000 50%);
+        `
         
        shiny.style = `background: conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%, 
-        hsl(0, 0%, 0%) ${-24.66 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 100%) ${0.25 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${50.63 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${51.97 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 100%) ${88.12 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${142.5 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 100%) ${196.87 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${256.87 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 100%) ${300 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${335.2 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${335.34 + (gamma / 8) + "deg"} , 
-        hsl(0, 0%, 100%) ${360.25 + (gamma / 8) + "deg"}), 
-        
-        conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%, 
-        hsl(0, 0%, 0%) ${-24.66 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 100%) ${0.25 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${50.63 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${51.97 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 100%) ${88.12 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${142.5 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 100%) ${196.87 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${256.87 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 100%) ${300 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${335.2 + (gamma / 8) + "deg"}, 
-        hsl(0, 0%, 0%) ${335.34 + (gamma / 8) + "deg"} , 
-        hsl(0, 0%, 100%) ${360.25 + (gamma / 8) + "deg"}), 
+       hsl(0, 0%, 0%) ${-24.66 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${0.25 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${50.63 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${51.97 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${88.12 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${142.5 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${196.87 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${256.87 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${300 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${335.2 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${335.34 + (gamma / 8) + "deg"} , 
+       hsl(0, 0%, 100%) ${360.25 + (gamma / 8) + "deg"}), 
+       
+       conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%, 
+       hsl(0, 0%, 0%) ${-24.66 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${0.25 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${50.63 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${51.97 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${88.12 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${142.5 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${196.87 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${256.87 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${300 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${335.2 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${335.34 + (gamma / 8) + "deg"} , 
+       hsl(0, 0%, 100%) ${360.25 + (gamma / 8) + "deg"}), 
 
-        radial-gradient(95.11% 95.11% at 36.64% 4.89%, 
-            hsl(${178 + (beta * 2)}, 66%, 49%) 0%, 
-            hsl(${69 + (beta * 2)}, 89%, 68%) 22.92%, 
-            hsl(${300 + (beta * 2)}, 98%, 84%) 46.88%, 
-            hsl(${234 + (beta * 2)}, 93%, 83%) 68.23%, 
-            hsl(${148 + (beta * 2)}, 91%, 67%) 87.5%, 
-            hsl(${199 + (beta * 2)}, 90%, 65%) 100%);`;
+       -o-radial-gradient(36.64% 4.89%, 
+           95.11% 95.11%, 
+           hsl(${178 + (beta * 2)}, 66%, 49%) 0%, 
+           hsl(${69 + (beta * 2)}, 89%, 68%) 22.92%, 
+           hsl(${300 + (beta * 2)}, 98%, 84%) 46.88%, 
+           hsl(${234 + (beta * 2)}, 93%, 83%) 68.23%, 
+           hsl(${148 + (beta * 2)}, 91%, 67%) 87.5%, 
+           hsl(${199 + (beta * 2)}, 90%, 65%) 100%);
+background: conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%, 
+       hsl(0, 0%, 0%) ${-24.66 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${0.25 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${50.63 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${51.97 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${88.12 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${142.5 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${196.87 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${256.87 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${300 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${335.2 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${335.34 + (gamma / 8) + "deg"} , 
+       hsl(0, 0%, 100%) ${360.25 + (gamma / 8) + "deg"}), 
+       
+       conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%, 
+       hsl(0, 0%, 0%) ${-24.66 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${0.25 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${50.63 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${51.97 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${88.12 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${142.5 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${196.87 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${256.87 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 100%) ${300 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${335.2 + (gamma / 8) + "deg"}, 
+       hsl(0, 0%, 0%) ${335.34 + (gamma / 8) + "deg"} , 
+       hsl(0, 0%, 100%) ${360.25 + (gamma / 8) + "deg"}), 
+
+       radial-gradient(95.11% 95.11% at 36.64% 4.89%, 
+           hsl(${178 + (beta * 2)}, 66%, 49%) 0%, 
+           hsl(${69 + (beta * 2)}, 89%, 68%) 22.92%, 
+           hsl(${300 + (beta * 2)}, 98%, 84%) 46.88%, 
+           hsl(${234 + (beta * 2)}, 93%, 83%) 68.23%, 
+           hsl(${148 + (beta * 2)}, 91%, 67%) 87.5%, 
+           hsl(${199 + (beta * 2)}, 90%, 65%) 100%);
+`;
        
        break;
 
@@ -341,7 +423,6 @@ function handleOrientation(event) {
             ticketNumber.style = `
                 background: black;
                 -webkit-background-clip: text;
-                background-clip: text
                 -webkit-text-fill-color: transparent;`;
             break;
     } 
