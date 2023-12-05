@@ -316,12 +316,15 @@ h1 {
 }
 
 .iridescent-dark .noise {
-    opacity: 1;
+    opacity: 0.5;
     background-size: 100% 100%, 200% 200%;
     background-blend-mode: multiply, overlay;
     background-position: 50% 50%, 50% 50%;
 
-    mix-blend-mode: color-dodge;
+    filter: brightness(2) contrast(1);
+
+    /*mix-blend-mode: color-dodge;*/
+    mix-blend-mode: luminosity;
 }
 
 /* Iridescent Light */
