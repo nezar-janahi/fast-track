@@ -1,5 +1,5 @@
    // Get queries
-   let ticketHolder = document.querySelector('.ticketHolder')
+   let ticketHolder = document.querySelector('.ticketHolder');
    let ticket = document.querySelector('.ticket');
    let shiny = document.querySelector('.shiny');
    let spotlight = document.querySelector('.spotlight');
@@ -8,12 +8,12 @@
    let progressBarContainer = document.querySelector('.progressbar');
    let progressBarFill = document.querySelector('.fill');
    let border = document.querySelector('.border');
-   let info = document.querySelector('.info')
+   let info = document.querySelector('.info');
    let noise = document.querySelector('.noise');
  
    let enable3d = document.querySelector('#enable3d');
 
-   let applePopup = document.querySelector('.apple-request')
+   let applePopup = document.querySelector('.apple-request');
 
    // Require Apple's requirement
    function requestOrientationPermission(){
@@ -22,7 +22,7 @@
             // iOS 13+
             DeviceOrientationEvent.requestPermission().then(permissionState => {
                 if (permissionState === 'granted') {
-                    //window.addEventListener("deviceorientation", handleOrientation, false);
+                    window.addEventListener("deviceorientation", handleOrientation, false);
                     alert('This is a iOS Device')
                     applePopup.style.display = 'none';
                 }
@@ -168,7 +168,7 @@ function handleOrientation(event) {
     } else {
         ticket.style = `
         -webkit-transform: perspective(600px) rotateX(0deg) rotateY(0deg);
-                transform: perspective(600px) rotateX(0deg) rotateY(0deg)
+                transform: perspective(600px) rotateX(0deg) rotateY(0deg);
         `;
     }
     
