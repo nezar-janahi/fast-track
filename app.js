@@ -19,7 +19,7 @@
    function requestOrientationPermission(){
 
         if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-            // iOS
+            // iOS 13+
             DeviceOrientationEvent.requestPermission().then(permissionState => {
                 if (permissionState === 'granted') {
                     window.addEventListener("deviceorientation", handleOrientation, false);
@@ -36,9 +36,6 @@
             applePopup.style.display = 'none';
         }
     }
-
-
-
  
  /* Time List */
  let updateTimeList = [
