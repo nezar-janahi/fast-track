@@ -416,10 +416,8 @@ h1 {
     background-image: var(--glitter), -o-linear-gradient(#FDD835 0%, #FDD835 100%);
     background-image: var(--glitter), linear-gradient(#FDD835 0%, #FDD835 100%);
     background-size: 100% 100%;
-    
 
     mix-blend-mode: overlay;
-
 }
 
 /************************** 
@@ -427,9 +425,22 @@ h1 {
 ***************************/
 
 form {
-    position:absolute;
-    top:0;
-    left:0;
+    background: rgba(0,0,0,0.5);
+    padding:1em;
+    color:white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+form .item {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+form .item label {
+    margin-right:1em;
 }
 
 .tab {

@@ -19,7 +19,7 @@
    function requestOrientationPermission(){
 
         if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-
+            // iOS
             DeviceOrientationEvent.requestPermission().then(permissionState => {
                 if (permissionState === 'granted') {
                     window.addEventListener("deviceorientation", handleOrientation, false);
@@ -198,7 +198,9 @@ function handleOrientation(event) {
             ticket.classList.remove('no-gradient', 'iridescent-dark', 'iridescent-light');
 
             // Spotlight
-            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(0,0,0,1) 0%, #F8F6F0 100%)`;
+            spotlight.style = `
+            background: -o-radial-gradient(${percentGamma}% ${percentBeta}%, circle, #000000 0%, #F8F6F0 100%);
+            background: radial-gradient(circle at ${percentGamma}% ${percentBeta}%, #000000 0%, #F8F6F0 100%);`;
 
             ticketNumber.style = `
             background: 
@@ -321,14 +323,17 @@ function handleOrientation(event) {
             ticket.classList.remove('iridescent-light', 'iridescent-dark', 'gold')
 
             // Spotlight
-            spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,1) 0%, rgba(0,0,0,0.2) 100%)`;
+            spotlight.style = `
+                background: radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,1) 0%, rgba(0,0,0,0.2) 100%);
+                background: -o-radial-gradient(${percentGamma}% ${percentBeta}%, circle, #FFFFFF 0%, rgba(0,0,0,0.2) 100%);
+            `;
 
             // Only needed when the previous selection was 'gold'
             ticketNumber.style = `
                 background: black;
                 -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;`;        
-
+                background-clip: text
+                -webkit-text-fill-color: transparent;`;
             break;
     } 
 
