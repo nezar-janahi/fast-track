@@ -154,6 +154,7 @@ h1 {
     margin:2em 0;
     width:380px;
     height:380px;
+    /*
     -webkit-filter: drop-shadow(0px 167px 67px rgba(0, 0, 0, 0.01)) 
             drop-shadow(0px 94px 56px rgba(0, 0, 0, 0.05)) 
             drop-shadow(0px 42px 42px rgba(0, 0, 0, 0.09)) 
@@ -161,7 +162,7 @@ h1 {
     filter: drop-shadow(0px 167px 67px rgba(0, 0, 0, 0.01)) 
             drop-shadow(0px 94px 56px rgba(0, 0, 0, 0.05)) 
             drop-shadow(0px 42px 42px rgba(0, 0, 0, 0.09)) 
-            drop-shadow(0px 10px 23px rgba(0, 0, 0, 0.1));
+            drop-shadow(0px 10px 23px rgba(0, 0, 0, 0.1));*/
     border-radius: 8px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
