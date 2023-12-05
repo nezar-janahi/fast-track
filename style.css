@@ -5,6 +5,34 @@
 * Browsers: last 4 version
 */
 
+:root {
+    --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png"); 
+}
+
+@property --x {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 0%;
+}
+
+@property --y {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 0%;
+}
+
+@property --endx {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 100%;
+}
+
+@property --endy {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 100%;
+}
+
 .test {
     position: fixed;
     bottom:1em;
@@ -14,9 +42,7 @@
     opacity: 0;
 }
 
-:root {
-    --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png"); 
-  }
+
 
 * {
     margin:0;
@@ -102,25 +128,76 @@ h1 {
     font-weight:600;
 }
 
+/********************/
+/* Ticket Animation */
+/********************/
+
 @keyframes moveTicket {
+    /* Top Right */
     0% {
-        -webkit-transform: perspective(600px) rotateX(-30deg) rotateY(-30deg);
-        transform: perspective(600px) rotateX(-30deg) rotateY(-30deg);
+        transform: perspective(600px) rotateX(16deg) rotateY(16deg);
     } 
-    33% {
-        -webkit-transform: perspective(600px) rotateX(0deg) rotateY(0deg);
-        transform: perspective(600px) rotateX(0deg) rotateY(0deg);
-
+    /* Bottom Right */
+    25% {
+        transform: perspective(600px) rotateX(-16deg) rotateY(16deg); 
     }
-    66% {
-
+    /* Bottom Left */
+    50% {
+        transform: perspective(600px) rotateX(-16deg) rotateY(-16deg); 
     }
-
+    /* Top Left */
+    75% {
+        transform: perspective(600px) rotateX(16deg) rotateY(-16deg); 
+    }
+    /* Restart */
     100% {
-        -webkit-transform: perspective(600px) rotateX(30deg) rotateY(30deg);
-        transform: perspective(600px) rotateX(30deg) rotateY(30deg);
+        transform: perspective(600px) rotateX(16deg) rotateY(16deg);
     }
 }
+
+.ticket-animation {
+    animation-name: moveTicket;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}
+
+@keyframes spotlightAnimation {
+    /* Top Right */
+    0% {
+        --x: 0%;
+        --y: 0%;
+    }
+    /* Bottom Right */
+    25% {
+        --x: 0%;
+        --y: 100%;
+    }
+    /* Bottom Left */
+    50% {
+        --x: 100%;
+        --y: 100%;
+    }
+    /* Top Left */
+    75% {
+        --x: 100%;
+        --y: 0%;
+    }
+    /* Restart */
+    100% {
+        --x: 0%;
+        --y: 0%;
+    }
+}
+
+.spotlight-animation {
+    animation-name: spotlightAnimation;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+}
+
+
 
 /**********
  * Ticket *  
@@ -140,16 +217,7 @@ h1 {
     overflow: hidden;
 
     filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.3));
-
-    /*
-    animation-name: moveTicket;
-    animation-duration: 4s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    */
-  }
-
+}
 
 .ticket .top {
     padding:2em;
@@ -294,6 +362,7 @@ h1 {
 }
 
 .no-gradient .spotlight {
+    background: radial-gradient(circle at var(--x) var(--y), rgba(255,255,255,1) 0%, rgba(0,0,0,0.2) 100%);
     mix-blend-mode: normal;
 }
 
@@ -420,7 +489,13 @@ h1 {
 }
 
 .gold .ticketNumber {
+    background: 
+        radial-gradient(ellipse 100% 100% at calc(100 - var(--x)) calc(100 - var(--y)), #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+        radial-gradient(ellipse 100% 100% at var(--x) var(--y), #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
     text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .gold .progressbar {
@@ -441,6 +516,7 @@ h1 {
 }
 
 .gold .spotlight {
+    background: radial-gradient(circle at var(--x) var(--y), #000000 0%, #F8F6F0 100%);
     mix-blend-mode: overlay;
 }
 

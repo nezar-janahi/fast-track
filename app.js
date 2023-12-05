@@ -12,8 +12,10 @@
    let noise = document.querySelector('.noise');
  
    let enable3d = document.querySelector('#enable3d');
+   let animation = document.querySelector('#cardAnimation');
 
    let applePopup = document.querySelector('.apple-request');
+
 
    // Require Apple's requirement
    function requestOrientationPermission(){
@@ -23,7 +25,6 @@
             DeviceOrientationEvent.requestPermission().then(permissionState => {
                 if (permissionState === 'granted') {
                     window.addEventListener("deviceorientation", handleOrientation, false);
-                    console.log('This is a iOS Device')
                     applePopup.style.display = 'none';
                 }
             }).catch(console.error);
@@ -31,8 +32,6 @@
         } else {
             // handle regular non iOS 13+ devices
             window.addEventListener("deviceorientation", handleOrientation, false);
-            console.log('This is NOT a iOS Device')
-
             applePopup.style.display = 'none';
         }
     }
@@ -79,6 +78,7 @@ updateTimeList.map((e) => {
 
 // Get Gradient Value
 var e = document.getElementById("gradientSelect");
+
 function onChange() {
     var value = e.value;
     var text = e.options[e.selectedIndex].text;
@@ -161,6 +161,15 @@ function handleOrientation(event) {
         gamma = -30;
     }
 
+    // Initiate Animation 
+    if(enable3d.checked) {
+        ticket.classList.remove('ticket-animation');
+    } else {
+        ticket.classList.add('ticket-animation');
+
+    }
+    
+
     // Allow the ticket to rotate
     
     if(enable3d.checked) {
@@ -170,7 +179,6 @@ function handleOrientation(event) {
                 transform: perspective(600px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg);
         `;
     } else {
-
 
         ticket.style = `
         -webkit-transform: perspective(600px) rotateX(0deg) rotateY(0deg);
@@ -213,21 +221,21 @@ function handleOrientation(event) {
             // Remove 
             ticket.classList.remove('no-gradient', 'iridescent-dark', 'iridescent-light');
 
-            // Spotlight
-            spotlight.style = `
-            background: -o-radial-gradient(${percentGamma}% ${percentBeta}%, circle, #000000 0%, #F8F6F0 100%);
-            background: radial-gradient(circle at ${percentGamma}% ${percentBeta}%, #000000 0%, #F8F6F0 100%);`;
+            // Spotlight & ticketNumber
+            if(enable3d.checked) {
 
-            ticketNumber.style = `
-            background: 
-                -o-radial-gradient(${100 - percentGamma}% ${100 - percentBeta}%, ellipse 100% 100%, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-                -o-radial-gradient(${percentGamma}% ${percentBeta}%, ellipse 100% 100%, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
-            background: 
-                radial-gradient(ellipse 100% 100% at ${100 - percentGamma}% ${100 - percentBeta}%, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-                radial-gradient(ellipse 100% 100% at ${percentGamma}% ${percentBeta}%, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;`
+                spotlight.style = `background: radial-gradient(circle at ${percentGamma}% ${percentBeta}%, #000000 0%, #F8F6F0 100%);`;
+    
+                /* FIX THE CSS EQUIVELENT */
+                ticketNumber.style = `
+                background: 
+                    radial-gradient(ellipse 100% 100% at ${100 - percentGamma}% ${100 - percentBeta}%, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                    radial-gradient(ellipse 100% 100% at ${percentGamma}% ${percentBeta}%, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;`;
+            }
+        
             break;
 
     // Iridescent
@@ -421,10 +429,13 @@ background: conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%,
             ticket.classList.remove('iridescent-light', 'iridescent-dark', 'gold')
 
             // Spotlight
-            spotlight.style = `
-                background: radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,1) 0%, rgba(0,0,0,0.2) 100%);
-                background: -o-radial-gradient(${percentGamma}% ${percentBeta}%, circle, #FFFFFF 0%, rgba(0,0,0,0.2) 100%);
-            `;
+            if(enable3d.checked) {
+                spotlight.style = `background: radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,1) 0%, rgba(0,0,0,0.2) 100%);`;
+                spotlight.classList.remove('spotlight-animation')
+            } else {
+                spotlight.classList.add('spotlight-animation');
+
+            }
 
             // Only needed when the previous selection was 'gold'
             ticketNumber.style = `
