@@ -167,7 +167,7 @@ function handleOrientation(event) {
 
         document.querySelector('.dev-ticket').style = `
         -webkit-transform: perspective(600px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg);
-        transform: perspective(600px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg);
+                transform: perspective(600px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg);
         `
 
         ticket.style = `
@@ -424,6 +424,9 @@ background: conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%,
 
         case 'default': 
             
+        document.querySelector('.dev-ticket').classList.add('no-gradient')
+        document.querySelector('.dev-ticket').classList.remove('iridescent-light', 'iridescent-dark', 'gold')
+
             // Add classlist
             ticket.classList.add('no-gradient');
              
