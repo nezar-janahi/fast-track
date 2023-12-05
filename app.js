@@ -162,6 +162,7 @@ function handleOrientation(event) {
     }
 
     // Allow the ticket to rotate
+    /*
     if(enable3d.checked) {
         ticket.style = `
         -webkit-transform: perspective(600px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg);
@@ -172,7 +173,7 @@ function handleOrientation(event) {
         -webkit-transform: perspective(600px) rotateX(0deg) rotateY(0deg);
                 transform: perspective(600px) rotateX(0deg) rotateY(0deg);
         `;
-    }
+    }*/
     
     // When tilt, increase the opacity
     //beta < 0 ? spotlight.style.opacity = (beta * -1) / 30 : spotlight.style.opacity = beta / 30;
