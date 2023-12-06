@@ -87,7 +87,7 @@ h1,h2,h3,h4,h5,h6 {
     width:100%;
     height:100vh;
     background:#F16460;
-    z-index: 20;
+    z-index: 9999;
 }
 
 .apple-request .content{
@@ -148,28 +148,28 @@ h1 {
 @keyframes moveTicket {
     /* Top Right */
     0% {
-        --rotateStart: 16deg; 
-        --rotateEnd: 16deg;
+        --rotateStart: 8deg; 
+        --rotateEnd: 8deg;
     } 
     /* Bottom Right */
     25% {
-        --rotateStart: -16deg; 
-        --rotateEnd: 16deg;
+        --rotateStart: -8deg; 
+        --rotateEnd: 8deg;
     }
     /* Bottom Left */
     50% {
-        --rotateStart: -16deg; 
-        --rotateEnd: -16deg;
+        --rotateStart: -8deg; 
+        --rotateEnd: -8deg;
     }
     /* Top Left */
     75% {
-        --rotateStart: 16deg; 
-        --rotateEnd: -16deg;
+        --rotateStart: 8deg; 
+        --rotateEnd: -8deg;
     }
     /* Restart */
     100% {
-        --rotateStart: 16deg; 
-        --rotateEnd: 16deg;
+        --rotateStart: 8deg; 
+        --rotateEnd: 8deg;
     }
 }
 
