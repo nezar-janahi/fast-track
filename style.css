@@ -8,6 +8,10 @@
 :root {
     --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png"); 
 }
+/*****************************/
+/* FIX IRIDESCENT DARK & LIGHT GLOSS */
+/*****************************/
+
 /* Percentages */
 @property --x {
     syntax: '<percentage>';
@@ -653,11 +657,15 @@ h1 {
 .gold .spotlight {
     background: radial-gradient(circle at var(--x) var(--y), #000000 0%, #F8F6F0 100%);
     mix-blend-mode: overlay;
+
+    animation-name: moveTicket;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+
 }
 
 .gold .noise {
-    background-image: var(--glitter), -webkit-gradient(linear, left top, left bottom, from(#FDD835), to(#FDD835));
-    background-image: var(--glitter), -o-linear-gradient(#FDD835 0%, #FDD835 100%);
     background-image: var(--glitter), linear-gradient(#FDD835 0%, #FDD835 100%);
     background-size: 100% 100%;
 
