@@ -22,13 +22,13 @@
 }
 
 /* Rotation */
-@property --rotateStart {
+@property --rotateX {
     syntax: '<angle>';
     inherits: false;
     initial-value: 0deg;
 }
 
-@property --rotateEnd {
+@property --rotateY {
     syntax: '<angle>';
     inherits: false;
     initial-value: 0deg;
@@ -59,11 +59,6 @@
     inherits: false;
     initial-value: 0;
 }
-
-
-
-
-
 
 .test {
     position: fixed;
@@ -165,28 +160,28 @@ h1 {
 @keyframes moveTicket {
     /* Top Right */
     0% {
-        --rotateStart: 8deg; 
-        --rotateEnd: 8deg;
+        --rotateX: 8deg; 
+        --rotateY: 8deg;
     } 
     /* Bottom Right */
     25% {
-        --rotateStart: -8deg; 
-        --rotateEnd: 8deg;
+        --rotateX: -8deg; 
+        --rotateY: 8deg;
     }
     /* Bottom Left */
     50% {
-        --rotateStart: -8deg; 
-        --rotateEnd: -8deg;
+        --rotateX: -8deg; 
+        --rotateY: -8deg;
     }
     /* Top Left */
     75% {
-        --rotateStart: 8deg; 
-        --rotateEnd: -8deg;
+        --rotateX: 8deg; 
+        --rotateY: -8deg;
     }
     /* Restart */
     100% {
-        --rotateStart: 8deg; 
-        --rotateEnd: 8deg;
+        --rotateX: 8deg; 
+        --rotateY: 8deg;
     }
 }
 
@@ -254,7 +249,7 @@ h1 {
 
     filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.3));
 
-    transform: perspective(600px) rotateX(var(--rotateStart)) rotateY(var(--rotateEnd));
+    transform: perspective(600px) rotateX(var(--rotateX)) rotateY(var(--rotateY));
 
 }
 
@@ -462,7 +457,7 @@ h1 {
 
 .iridescent-dark .shiny {
     background: 
-        conic-gradient(from 176.21deg at 50% 50%, 
+        conic-gradient(from calc(176.21deg + var(--gammaStart) / 8) at 50% 50%, 
         #000000 calc(-24.66deg + var(--gammaStart) / 8), 
         #FFFFFF calc(0.25deg + var(--gammaStart) / 8),
         #000000 calc(50.63deg + var(--gammaStart) / 8),
@@ -515,38 +510,8 @@ h1 {
 .iridescent-light .shiny {
     background-blend-mode: screen, difference, normal;
     mix-blend-mode: normal;
-
-    background: 
-        conic-gradient(from 176.21deg at 50% 50%, 
-            #000000 calc(-24.66deg + var(--gammaStart) / 8), 
-            #FFFFFF calc(0.25deg + var(--gammaStart) / 8),
-            #000000 calc(50.63deg + var(--gammaStart) / 8),
-            #000000 calc(51.97deg + var(--gammaStart) / 8),
-            #FFFFFF calc(88.12deg + var(--gammaStart) / 8),
-            #000000 calc(142.5deg + var(--gammaStart) / 8),
-            #FFFFFF calc(196.87deg + var(--gammaStart) / 8),
-            #000000 calc(256.87deg + var(--gammaStart) / 8),
-            #FFFFFF calc(300deg + var(--gammaStart) / 8),
-            #000000 calc(335.2deg + var(--gammaStart) / 8),
-            #000000 calc(335.34deg + var(--gammaStart) / 8),
-            #FFFFFF calc(360.25deg + var(--gammaStart) / 8)),
-
-        conic-gradient(from 176.21deg at 50% 50%, 
-            #000000 calc(-24.66deg + var(--gammaStart) / 8), 
-            #FFFFFF calc(0.25deg + var(--gammaStart) / 8),
-            #000000 calc(50.63deg + var(--gammaStart) / 8),
-            #000000 calc(51.97deg + var(--gammaStart) / 8),
-            #FFFFFF calc(88.12deg + var(--gammaStart) / 8),
-            #000000 calc(142.5deg + var(--gammaStart) / 8),
-            #FFFFFF calc(196.87deg + var(--gammaStart) / 8),
-            #000000 calc(256.87deg + var(--gammaStart) / 8),
-            #FFFFFF calc(300deg + var(--gammaStart) / 8),
-            #000000 calc(335.2deg + var(--gammaStart) / 8),
-            #000000 calc(335.34deg + var(--gammaStart) / 8),
-            #FFFFFF calc(360.25deg + var(--gammaStart) / 8));
-
     background:
-        conic-gradient(from 176.21deg at 50% 50%, 
+        conic-gradient(from calc(176.21deg + var(--gammaStart)) at 50% 50%, 
             #000000 calc(-24.66deg + var(--gammaStart) / 8), 
             #FFFFFF calc(0.25deg + var(--gammaStart) / 8),
             #000000 calc(50.63deg + var(--gammaStart) / 8),
@@ -561,7 +526,7 @@ h1 {
             #FFFFFF calc(360.25deg + var(--gammaStart) / 8)),
 
     
-        conic-gradient(from 176.21deg at 50% 50%, 
+        conic-gradient(from calc(176.21deg + var(--gammaStart)) at 50% 50%, 
             #000000 calc(-24.66deg + var(--gammaStart) / 8), 
             #FFFFFF calc(0.25deg + var(--gammaStart) / 8),
             #000000 calc(50.63deg + var(--gammaStart) / 8),
@@ -629,7 +594,6 @@ h1 {
     animation-iteration-count: infinite;
     animation-timing-function: ease-out;
     animation-name: spotlightAnimation;
-
 }
 
 
