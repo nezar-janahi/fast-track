@@ -34,18 +34,35 @@
     initial-value: 0deg;
 }
 
-/* Gold Gradient */
-@property --goldStart {
+/* Gamma Values */
+@property --gammaStart {
     syntax: '<angle>';
     inherits: false;
     initial-value: 0deg;
 }
 
-@property --goldEnd {
+@property --gammaEnd {
     syntax: '<angle>';
     inherits: false;
     initial-value: 0deg;
 }
+
+/* Beta Values */
+@property --betaStart {
+    syntax: '<integer>';
+    inherits: false;
+    initial-value: 0;
+}
+
+@property --betaEnd {
+    syntax: '<integer>';
+    inherits: false;
+    initial-value: 0;
+}
+
+
+
+
 
 
 .test {
@@ -431,27 +448,140 @@ h1 {
     opacity: 1;
 }
 
+@keyframes betaOrientation {
+    from {
+        --betaStart: 0;
+        --gammaStart: -30deg;
+    }
+    to {
+        --betaStart: 360;
+        --gammaStart: 30deg;
+
+    }
+}
+
 .iridescent-dark .shiny {
+    background: 
+        conic-gradient(from 176.21deg at 50% 50%, 
+        #000000 calc(-24.66deg + var(--gammaStart) / 8), 
+        #FFFFFF calc(0.25deg + var(--gammaStart) / 8),
+        #000000 calc(50.63deg + var(--gammaStart) / 8),
+        #000000 calc(51.97deg + var(--gammaStart) / 8),
+        #FFFFFF calc(88.12deg + var(--gammaStart) / 8),
+        #000000 calc(142.5deg + var(--gammaStart) / 8),
+        #FFFFFF calc(196.87deg + var(--gammaStart) / 8),
+        #000000 calc(256.87deg + var(--gammaStart) / 8),
+        #FFFFFF calc(300deg + var(--gammaStart) / 8),
+        #000000 calc(335.2deg + var(--gammaStart) / 8),
+        #000000 calc(335.34deg + var(--gammaStart) / 8),
+        #FFFFFF calc(360.25deg + var(--gammaStart) / 8)),
+
+        radial-gradient(95.11% 95.11% at 36.64% 4.89%, 
+            hsl(calc(178 + var(--betaStart) * 2), 66%, 49%) 0%, 
+            hsl(calc(69 + var(--betaStart) * 2), 89%, 68%) 22.92%, 
+            hsl(calc(300 + var(--betaStart) * 2), 98%, 84%) 46.88%, 
+            hsl(calc(234 + var(--betaStart) * 2), 93%, 83%) 68.23%, 
+            hsl(calc(148 + var(--betaStart) * 2), 91%, 67%) 87.5%, 
+            hsl(calc(199 + var(--betaStart) * 2), 90%, 65%) 100%);
+
     background-blend-mode: difference, normal;
     mix-blend-mode: normal;
+
+    animation-name: betaOrientation;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
 }
 
 .iridescent-dark .noise {
     opacity: 0.5;
+    background-image: var(--glitter), radial-gradient(50% 50% at calc(100% - var(--x)) calc(100% - var(--y)), #FFFFFF 0%, #000000 100%);
     background-size: 100% 100%, 200% 200%;
     background-blend-mode: multiply, overlay;
     background-position: 50% 50%, 50% 50%;
 
     filter: brightness(2) contrast(1);
 
-    /*mix-blend-mode: color-dodge;*/
     mix-blend-mode: luminosity;
+
+    animation-name: spotlightAnimation ;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+
 }
 
 /* Iridescent Light */
 .iridescent-light .shiny {
     background-blend-mode: screen, difference, normal;
     mix-blend-mode: normal;
+
+    background: 
+        conic-gradient(from 176.21deg at 50% 50%, 
+            #000000 calc(-24.66deg + var(--gammaStart) / 8), 
+            #FFFFFF calc(0.25deg + var(--gammaStart) / 8),
+            #000000 calc(50.63deg + var(--gammaStart) / 8),
+            #000000 calc(51.97deg + var(--gammaStart) / 8),
+            #FFFFFF calc(88.12deg + var(--gammaStart) / 8),
+            #000000 calc(142.5deg + var(--gammaStart) / 8),
+            #FFFFFF calc(196.87deg + var(--gammaStart) / 8),
+            #000000 calc(256.87deg + var(--gammaStart) / 8),
+            #FFFFFF calc(300deg + var(--gammaStart) / 8),
+            #000000 calc(335.2deg + var(--gammaStart) / 8),
+            #000000 calc(335.34deg + var(--gammaStart) / 8),
+            #FFFFFF calc(360.25deg + var(--gammaStart) / 8)),
+
+        conic-gradient(from 176.21deg at 50% 50%, 
+            #000000 calc(-24.66deg + var(--gammaStart) / 8), 
+            #FFFFFF calc(0.25deg + var(--gammaStart) / 8),
+            #000000 calc(50.63deg + var(--gammaStart) / 8),
+            #000000 calc(51.97deg + var(--gammaStart) / 8),
+            #FFFFFF calc(88.12deg + var(--gammaStart) / 8),
+            #000000 calc(142.5deg + var(--gammaStart) / 8),
+            #FFFFFF calc(196.87deg + var(--gammaStart) / 8),
+            #000000 calc(256.87deg + var(--gammaStart) / 8),
+            #FFFFFF calc(300deg + var(--gammaStart) / 8),
+            #000000 calc(335.2deg + var(--gammaStart) / 8),
+            #000000 calc(335.34deg + var(--gammaStart) / 8),
+            #FFFFFF calc(360.25deg + var(--gammaStart) / 8));
+
+    background:
+        conic-gradient(from 176.21deg at 50% 50%, 
+            #000000 calc(-24.66deg + var(--gammaStart) / 8), 
+            #FFFFFF calc(0.25deg + var(--gammaStart) / 8),
+            #000000 calc(50.63deg + var(--gammaStart) / 8),
+            #000000 calc(51.97deg + var(--gammaStart) / 8),
+            #FFFFFF calc(88.12deg + var(--gammaStart) / 8),
+            #000000 calc(142.5deg + var(--gammaStart) / 8),
+            #FFFFFF calc(196.87deg + var(--gammaStart) / 8),
+            #000000 calc(256.87deg + var(--gammaStart) / 8),
+            #FFFFFF calc(300deg + var(--gammaStart) / 8),
+            #000000 calc(335.2deg + var(--gammaStart) / 8),
+            #000000 calc(335.34deg + var(--gammaStart) / 8),
+            #FFFFFF calc(360.25deg + var(--gammaStart) / 8)),
+
+    
+        conic-gradient(from 176.21deg at 50% 50%, 
+            #000000 calc(-24.66deg + var(--gammaStart) / 8), 
+            #FFFFFF calc(0.25deg + var(--gammaStart) / 8),
+            #000000 calc(50.63deg + var(--gammaStart) / 8),
+            #000000 calc(51.97deg + var(--gammaStart) / 8),
+            #FFFFFF calc(88.12deg + var(--gammaStart) / 8),
+            #000000 calc(142.5deg + var(--gammaStart) / 8),
+            #FFFFFF calc(196.87deg + var(--gammaStart) / 8),
+            #000000 calc(256.87deg + var(--gammaStart) / 8),
+            #FFFFFF calc(300deg + var(--gammaStart) / 8),
+            #000000 calc(335.2deg + var(--gammaStart) / 8),
+            #000000 calc(335.34deg + var(--gammaStart) / 8),
+            #FFFFFF calc(360.25deg + var(--gammaStart) / 8)),
+
+        radial-gradient(95.11% 95.11% at 36.64% 4.89%, 
+            hsl(calc(178 + var(--betaStart) * 2), 66%, 49%) 0%, 
+            hsl(calc(69 + var(--betaStart) * 2), 89%, 68%) 22.92%, 
+            hsl(calc(300 + var(--betaStart) * 2), 98%, 84%) 46.88%, 
+            hsl(calc(234 + var(--betaStart) * 2), 93%, 83%) 68.23%, 
+            hsl(calc(148 + var(--betaStart) * 2), 91%, 67%) 87.5%, 
+            hsl(calc(199 + var(--betaStart) * 2), 90%, 65%) 100%);       
 }
 
 .iridescent-light {
@@ -488,11 +618,18 @@ h1 {
 
 .iridescent-light .noise {
     opacity: 1;
+    background-image: var(--glitter), radial-gradient(50% 50% at calc(100% - var(--x)) calc(100% - var(--y)), #FFFFFF 0%, #000000 100%);
     background-size: 100% 100%, 200% 200%;
     background-blend-mode: overlay, soft-light;
     background-position: 50% 50%, 50% 50%;
 
     mix-blend-mode: soft-light;
+
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+    animation-name: spotlightAnimation;
+
 }
 
 
