@@ -140,7 +140,6 @@ function percentage(value, max, min) {
     // return value
     return percent;
 }
-  
 
 function handleOrientation(event) {
     // Device Orientation Values
@@ -161,29 +160,14 @@ function handleOrientation(event) {
         gamma = -30;
     }
 
-    // Initiate Animation 
-    if(enable3d.checked) {
-        ticket.classList.remove('ticket-animation');
-    } else {
-        ticket.classList.add('ticket-animation');
-
-    }
-    
 
     // Allow the ticket to rotate
-    
     if(enable3d.checked) {
-
-        ticket.style = `
-        -webkit-transform: perspective(600px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg);
-                transform: perspective(600px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg);
-        `;
+        ticket.classList.remove('ticket-animation');
+        ticket.style = `transform: perspective(600px) rotateX(${beta / 8}deg) rotateY(${gamma / 3}deg);`;
     } else {
-
-        ticket.style = `
-        -webkit-transform: perspective(600px) rotateX(0deg) rotateY(0deg);
-                transform: perspective(600px) rotateX(0deg) rotateY(0deg);
-        `;
+        ticket.classList.add('ticket-animation');
+        ticket.style = ``;
     }
     
     // When tilt, increase the opacity
@@ -226,14 +210,21 @@ function handleOrientation(event) {
 
                 spotlight.style = `background: radial-gradient(circle at ${percentGamma}% ${percentBeta}%, #000000 0%, #F8F6F0 100%);`;
     
-                /* FIX THE CSS EQUIVELENT */
+                ticketNumber.classList.remove('spotlight-animation');
+
                 ticketNumber.style = `
                 background: 
-                    radial-gradient(ellipse 100% 100% at ${100 - percentGamma}% ${100 - percentBeta}%, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-                    radial-gradient(ellipse 100% 100% at ${percentGamma}% ${percentBeta}%, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
-                    background-clip: text;
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;`;
+                    radial-gradient(ellipse 100% 100% at ${(100 - percentGamma) + "%"} ${(100-percentBeta)+"%"}, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                    radial-gradient(ellipse 100% 100% at ${percentGamma+"%"} ${percentBeta+"%"}, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+                text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;`
+
+            } else {
+                ticketNumber.classList.add('spotlight-animation')
+                spotlight.style = ``;
+                ticketNumber.style = ``;
             }
         
             break;
@@ -261,9 +252,6 @@ function handleOrientation(event) {
 
         // Noise
         noise.style = `
-        background-image: 
-            url('https://assets.codepen.io/13471/silver-glitter-background.png'), 
-            -o-radial-gradient(${100-percentGamma + "%"} ${100-percentBeta + "%"}, 50% 50%, #FFFFFF 0%, #000000 100%);
         background-image: 
             url('https://assets.codepen.io/13471/silver-glitter-background.png'), 
             radial-gradient(50% 50% at ${100-percentGamma + "%"} ${100-percentBeta + "%"}, #FFFFFF 0%, #000000 100%);
@@ -430,11 +418,11 @@ background: conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%,
 
             // Spotlight
             if(enable3d.checked) {
+                spotlight.classList.remove('spotlight-animation');
                 spotlight.style = `background: radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,1) 0%, rgba(0,0,0,0.2) 100%);`;
-                spotlight.classList.remove('spotlight-animation')
             } else {
                 spotlight.classList.add('spotlight-animation');
-
+                spotlight.style = ``;
             }
 
             // Only needed when the previous selection was 'gold'

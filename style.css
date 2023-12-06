@@ -8,7 +8,7 @@
 :root {
     --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png"); 
 }
-
+/* Percentages */
 @property --x {
     syntax: '<percentage>';
     inherits: false;
@@ -21,17 +21,32 @@
     initial-value: 0%;
 }
 
-@property --endx {
-    syntax: '<percentage>';
+/* Rotation */
+@property --rotateStart {
+    syntax: '<angle>';
     inherits: false;
-    initial-value: 100%;
+    initial-value: 0deg;
 }
 
-@property --endy {
-    syntax: '<percentage>';
+@property --rotateEnd {
+    syntax: '<angle>';
     inherits: false;
-    initial-value: 100%;
+    initial-value: 0deg;
 }
+
+/* Gold Gradient */
+@property --goldStart {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@property --goldEnd {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
 
 .test {
     position: fixed;
@@ -41,8 +56,6 @@
     padding:1em;
     opacity: 0;
 }
-
-
 
 * {
     margin:0;
@@ -135,31 +148,29 @@ h1 {
 @keyframes moveTicket {
     /* Top Right */
     0% {
-        transform: perspective(600px) rotateX(16deg) rotateY(16deg);
+        --rotateStart: 16deg; 
+        --rotateEnd: 16deg;
     } 
     /* Bottom Right */
     25% {
-        transform: perspective(600px) rotateX(-16deg) rotateY(16deg); 
+        --rotateStart: -16deg; 
+        --rotateEnd: 16deg;
     }
     /* Bottom Left */
     50% {
-        transform: perspective(600px) rotateX(-16deg) rotateY(-16deg); 
+        --rotateStart: -16deg; 
+        --rotateEnd: -16deg;
     }
     /* Top Left */
     75% {
-        transform: perspective(600px) rotateX(16deg) rotateY(-16deg); 
+        --rotateStart: 16deg; 
+        --rotateEnd: -16deg;
     }
     /* Restart */
     100% {
-        transform: perspective(600px) rotateX(16deg) rotateY(16deg);
+        --rotateStart: 16deg; 
+        --rotateEnd: 16deg;
     }
-}
-
-.ticket-animation {
-    animation-name: moveTicket;
-    animation-duration: 16s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-out;
 }
 
 @keyframes spotlightAnimation {
@@ -190,11 +201,19 @@ h1 {
     }
 }
 
+.ticket-animation, 
 .spotlight-animation {
-    animation-name: spotlightAnimation;
     animation-duration: 16s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-out;
+}
+
+.ticket-animation {
+    animation-name: moveTicket;
+}
+
+.spotlight-animation {
+    animation-name: spotlightAnimation;
 }
 
 
@@ -217,6 +236,9 @@ h1 {
     overflow: hidden;
 
     filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.3));
+
+    transform: perspective(600px) rotateX(var(--rotateStart)) rotateY(var(--rotateEnd));
+
 }
 
 .ticket .top {
@@ -490,7 +512,7 @@ h1 {
 
 .gold .ticketNumber {
     background: 
-        radial-gradient(ellipse 100% 100% at calc(100 - var(--x)) calc(100 - var(--y)), #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+        radial-gradient(ellipse 100% 100% at calc(100% - var(--x)) calc(100% - var(--y)), #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
         radial-gradient(ellipse 100% 100% at var(--x) var(--y), #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
     text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
     background-clip: text;
