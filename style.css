@@ -8,9 +8,9 @@
 :root {
     --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png"); 
 }
-/*****************************/
+/****************************************/
 /* FIX IRIDESCENT DARK & LIGHT GLOSS */
-/*****************************/
+/****************************************/
 
 /* Percentages */
 @property --x {
@@ -63,6 +63,7 @@
     inherits: false;
     initial-value: 0;
 }
+
 
 .test {
     position: fixed;
@@ -170,8 +171,8 @@ h1 {
         --betaStart: 0;
         --gammaStart: 30deg;
 
-        --x: 0%;
-        --y: 0%;
+        --x: 80%;
+        --y: 80%;
     } 
     /* Bottom Right */
     25% {
@@ -181,8 +182,8 @@ h1 {
         --betaStart: 100;
         --gammaStart: 30deg;
 
-        --x: 0%;
-        --y: 100%;
+        --x: 80%;
+        --y: 20%;
     }
     /* Bottom Left */
     50% {
@@ -192,8 +193,8 @@ h1 {
         --betaStart: 100;
         --gammaStart: -30deg;
 
-        --x: 100%;
-        --y: 100%;
+        --x: 20%;
+        --y: 20%;
     }
     /* Top Left */
     75% {
@@ -203,8 +204,8 @@ h1 {
         --betaStart: 0;
         --gammaStart: -30deg;
 
-        --x: 100%;
-        --y: 0%;
+        --x: 20%;
+        --y: 80%;
     }
     /* Restart */
     100% {
@@ -214,8 +215,8 @@ h1 {
         --betaStart: 0;
         --gammaStart: 30deg;
 
-        --x: 0%;
-        --y: 0%;
+        --x: 80%;
+        --y: 80%;
     }
 }
 
