@@ -162,72 +162,72 @@ h1 {
     0% {
         --rotateX: 8deg; 
         --rotateY: 8deg;
+
+        --betaStart: 0;
+        --gammaStart: -30deg;
+
+        --x: 0%;
+        --y: 0%;
     } 
     /* Bottom Right */
     25% {
         --rotateX: -8deg; 
         --rotateY: 8deg;
+
+        --betaStart: 360;
+        --gammaStart: 30deg;
+
+        --x: 0%;
+        --y: 100%;
+
+
     }
     /* Bottom Left */
     50% {
         --rotateX: -8deg; 
         --rotateY: -8deg;
+
+        --betaStart: 0;
+        --gammaStart: -30deg;
+
+        --x: 100%;
+        --y: 100%;
+
+
     }
     /* Top Left */
     75% {
         --rotateX: 8deg; 
         --rotateY: -8deg;
+
+        --betaStart: 0;
+        --gammaStart: -30deg;
+
+        --x: 100%;
+        --y: 0%;
+
+
     }
     /* Restart */
     100% {
         --rotateX: 8deg; 
         --rotateY: 8deg;
-    }
-}
 
-@keyframes spotlightAnimation {
-    /* Top Right */
-    0% {
-        --x: 0%;
-        --y: 0%;
-    }
-    /* Bottom Right */
-    25% {
-        --x: 0%;
-        --y: 100%;
-    }
-    /* Bottom Left */
-    50% {
-        --x: 100%;
-        --y: 100%;
-    }
-    /* Top Left */
-    75% {
-        --x: 100%;
-        --y: 0%;
-    }
-    /* Restart */
-    100% {
-        --x: 0%;
-        --y: 0%;
-    }
-}
+        --betaStart: 0;
+        --gammaStart: -30deg;
 
-.ticket-animation, 
-.spotlight-animation {
-    animation-duration: 16s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-out;
+        --x: 0%;
+        --y: 0%;
+    }
 }
 
 .ticket-animation {
     animation-name: moveTicket;
-}
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
 
-.spotlight-animation {
-    animation-name: spotlightAnimation;
 }
-
 
 
 /**********
@@ -251,6 +251,10 @@ h1 {
 
     transform: perspective(600px) rotateX(var(--rotateX)) rotateY(var(--rotateY));
 
+    animation-name: moveTicket;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 }
 
 .ticket .top {
@@ -398,6 +402,11 @@ h1 {
 .no-gradient .spotlight {
     background: radial-gradient(circle at var(--x) var(--y), rgba(255,255,255,1) 0%, rgba(0,0,0,0.2) 100%);
     mix-blend-mode: normal;
+
+    animation-name: moveTicket;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
 }
 
 .no-gradient .border, 
@@ -441,18 +450,11 @@ h1 {
 
 .iridescent-dark .spotlight {
     opacity: 1;
-}
 
-@keyframes betaOrientation {
-    from {
-        --betaStart: 0;
-        --gammaStart: -30deg;
-    }
-    to {
-        --betaStart: 360;
-        --gammaStart: 30deg;
-
-    }
+    animation-name: moveTicket;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
 }
 
 .iridescent-dark .shiny {
@@ -482,7 +484,7 @@ h1 {
     background-blend-mode: difference, normal;
     mix-blend-mode: normal;
 
-    animation-name: betaOrientation;
+    animation-name: moveTicket;
     animation-duration: 16s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-out;
@@ -499,11 +501,10 @@ h1 {
 
     mix-blend-mode: luminosity;
 
-    animation-name: spotlightAnimation ;
+    animation-name: moveTicket;
     animation-duration: 16s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-out;
-
 }
 
 /* Iridescent Light */
@@ -547,6 +548,11 @@ h1 {
             hsl(calc(234 + var(--betaStart) * 2), 93%, 83%) 68.23%, 
             hsl(calc(148 + var(--betaStart) * 2), 91%, 67%) 87.5%, 
             hsl(calc(199 + var(--betaStart) * 2), 90%, 65%) 100%);       
+
+            animation-name: moveTicket;
+            animation-duration: 16s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-out;                
 }
 
 .iridescent-light {
@@ -590,15 +596,11 @@ h1 {
 
     mix-blend-mode: soft-light;
 
+    animation-name: moveTicket;
     animation-duration: 16s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-out;
-    animation-name: spotlightAnimation;
 }
-
-
-
-
 
 
 
@@ -619,6 +621,12 @@ h1 {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+
+    animation-name: moveTicket;
+    animation-duration: 16s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
 }
 
 .gold .progressbar {

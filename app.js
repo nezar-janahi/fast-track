@@ -191,9 +191,6 @@ function handleOrientation(event) {
     let percentGamma = (positiveValueGamma / 60) * 100
     let percentBeta = (positiveValueBeta / 60) * 100
 
-    // Spotlight
-    //spotlight.style.background = `radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(0,0,0,0.5) 0%, rgba(255,255,255,0.1) 100%)`;
-
     // Selector
     switch(onChange()) {
     
@@ -209,8 +206,6 @@ function handleOrientation(event) {
             if(enable3d.checked) {
 
                 spotlight.style = `background: radial-gradient(circle at ${percentGamma}% ${percentBeta}%, #000000 0%, #F8F6F0 100%);`;
-    
-                ticketNumber.classList.remove('spotlight-animation');
 
                 ticketNumber.style = `
                 background: 
@@ -222,7 +217,6 @@ function handleOrientation(event) {
                 -webkit-text-fill-color: transparent;`
 
             } else {
-                ticketNumber.classList.add('spotlight-animation')
                 spotlight.style = ``;
                 ticketNumber.style = ``;
             }
@@ -397,10 +391,8 @@ background: conic-gradient(from ${176.2 + (gamma / 8) + "deg"} at 50% 50%,
 
             // Spotlight
             if(enable3d.checked) {
-                spotlight.classList.remove('spotlight-animation');
                 spotlight.style = `background: radial-gradient(circle at ${percentGamma}% ${percentBeta}%, rgba(255,255,255,1) 0%, rgba(0,0,0,0.2) 100%);`;
             } else {
-                spotlight.classList.add('spotlight-animation');
                 spotlight.style = ``;
             }
 
