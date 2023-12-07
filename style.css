@@ -248,6 +248,7 @@ h1 {
     font-size: 3.4em;
     flex-grow: 1;
 
+    background-clip: text !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;        
 }
