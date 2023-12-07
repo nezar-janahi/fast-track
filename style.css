@@ -749,14 +749,39 @@ form .item label {
     text-transform: uppercase;
 }
 
-.button.fastTrack {
-    background: #67C381;
-    -webkit-box-shadow: 0px 12px 5px rgba(103, 195, 129, 0.04), 0px 7px 4px rgba(103, 195, 129, 0.12), 0px 3px 3px rgba(103, 195, 129, 0.2), 0px 1px 2px rgba(103, 195, 129, 0.24), 0px 0px 0px rgba(103, 195, 129, 0.24);
-            box-shadow: 0px 12px 5px rgba(103, 195, 129, 0.04), 0px 7px 4px rgba(103, 195, 129, 0.12), 0px 3px 3px rgba(103, 195, 129, 0.2), 0px 1px 2px rgba(103, 195, 129, 0.24), 0px 0px 0px rgba(103, 195, 129, 0.24);
+
+@keyframes fast-track-button {
+
+    from {
+        --x: 0%;
+    }
+    to {
+        --x: 200%;
+    }
 }
+
+.button.fastTrack {
+    animation-name: fast-track-button;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode:backwards;
+
+
+    background: linear-gradient(135deg, 
+        hsl(137, 43%, 58%) calc(-20% + var(--x)), 
+        hsl(137, 43%, 70%) var(--x), 
+        hsl(137, 43%, 58%) calc(20% + var(--x)));
+
+    box-shadow: 0px 12px 5px rgba(103, 195, 129, 0.04), 
+                0px 7px 4px rgba(103, 195, 129, 0.12), 
+                0px 3px 3px rgba(103, 195, 129, 0.2), 
+                0px 1px 2px rgba(103, 195, 129, 0.24), 
+                0px 0px 0px rgba(103, 195, 129, 0.24);
+}
+
 
 .button.primary {
     background: #4141D6;
-    -webkit-box-shadow: 0px 12px 5px rgba(65, 65, 214, 0.04), 0px 7px 4px rgba(65, 65, 214, 0.12), 0px 3px 3px rgba(65, 65, 214, 0.2), 0px 1px 2px rgba(65, 65, 214, 0.24), 0px 0px 0px rgba(65, 65, 214, 0.24);
-            box-shadow: 0px 12px 5px rgba(65, 65, 214, 0.04), 0px 7px 4px rgba(65, 65, 214, 0.12), 0px 3px 3px rgba(65, 65, 214, 0.2), 0px 1px 2px rgba(65, 65, 214, 0.24), 0px 0px 0px rgba(65, 65, 214, 0.24);
+    box-shadow: 0px 12px 5px rgba(65, 65, 214, 0.04), 0px 7px 4px rgba(65, 65, 214, 0.12), 0px 3px 3px rgba(65, 65, 214, 0.2), 0px 1px 2px rgba(65, 65, 214, 0.24), 0px 0px 0px rgba(65, 65, 214, 0.24);
 }
