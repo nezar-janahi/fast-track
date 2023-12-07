@@ -58,7 +58,7 @@
     right:1em;
     background:rgba(0,0,0,0.2);
     padding:1em;
-    opacity: 0;
+    opacity: 1;
 }
 
 * {
@@ -214,9 +214,9 @@ h1 {
 .ticketNumber
  {
     animation-name: moveTicket;
-    animation-duration: 16s;
+    animation-duration: 3s;
     animation-iteration-count: infinite;
-    animation-timing-function: ease-out;
+    animation-timing-function: linear;
 }
 
 
@@ -729,8 +729,6 @@ form .item label {
 }
 
 .button {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
