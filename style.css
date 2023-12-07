@@ -45,25 +45,12 @@
     initial-value: 0deg;
 }
 
-@property --gammaEnd {
-    syntax: '<angle>';
-    inherits: false;
-    initial-value: 0deg;
-}
-
 /* Beta Values */
 @property --betaStart {
     syntax: '<integer>';
     inherits: false;
     initial-value: 0;
 }
-
-@property --betaEnd {
-    syntax: '<integer>';
-    inherits: false;
-    initial-value: 0;
-}
-
 
 .test {
     position: fixed;
@@ -168,7 +155,7 @@ h1 {
         --rotateX: 8deg; 
         --rotateY: 8deg;
 
-        --betaStart: 0;
+        --betaStart: 100;
         --gammaStart: 30deg;
 
         --x: 80%;
@@ -179,7 +166,7 @@ h1 {
         --rotateX: -8deg; 
         --rotateY: 8deg;
 
-        --betaStart: 100;
+        --betaStart: 0;
         --gammaStart: 30deg;
 
         --x: 80%;
@@ -190,7 +177,7 @@ h1 {
         --rotateX: -8deg; 
         --rotateY: -8deg;
 
-        --betaStart: 100;
+        --betaStart: 0;
         --gammaStart: -30deg;
 
         --x: 20%;
@@ -201,7 +188,7 @@ h1 {
         --rotateX: 8deg; 
         --rotateY: -8deg;
 
-        --betaStart: 0;
+        --betaStart: 100;
         --gammaStart: -30deg;
 
         --x: 20%;
@@ -212,7 +199,7 @@ h1 {
         --rotateX: 8deg; 
         --rotateY: 8deg;
 
-        --betaStart: 0;
+        --betaStart: 100;
         --gammaStart: 30deg;
 
         --x: 80%;
@@ -220,12 +207,16 @@ h1 {
     }
 }
 
-.ticket-animation {
+.ticket,
+.spotlight,
+.shiny,
+.noise,
+.ticketNumber
+ {
     animation-name: moveTicket;
     animation-duration: 16s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-out;
-
 }
 
 
@@ -240,8 +231,6 @@ h1 {
     height:380px;
 
     border-radius: 8px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
 
     text-align: center;
     overflow: hidden;
@@ -249,11 +238,6 @@ h1 {
     filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.3));
 
     transform: perspective(600px) rotateX(var(--rotateX)) rotateY(var(--rotateY));
-
-    animation-name: moveTicket;
-    animation-duration: 16s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
 }
 
 .ticket .top {
@@ -402,11 +386,6 @@ h1 {
 .no-gradient .spotlight {
     background: radial-gradient(circle at var(--x) var(--y), rgba(255,255,255,1) 0%, rgba(0,0,0,0.2) 100%);
     mix-blend-mode: normal;
-
-    animation-name: moveTicket;
-    animation-duration: 16s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-out;
 }
 
 .no-gradient .border, 
@@ -453,10 +432,6 @@ h1 {
 
 .iridescent-dark .spotlight {
     opacity: 1;
-    animation-name: moveTicket;
-    animation-duration: 16s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-out;
 }
 
 .iridescent-dark .shiny {
@@ -485,11 +460,6 @@ h1 {
 
     background-blend-mode: difference, normal;
     mix-blend-mode: normal;
-
-    animation-name: moveTicket;
-    animation-duration: 16s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-out;
 }
 
 .iridescent-dark .noise {
@@ -503,11 +473,6 @@ h1 {
     mix-blend-mode: color-dodge;
 
     filter: brightness(2) contrast(0.8);
-
-    animation-name: moveTicket;
-    animation-duration: 16s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-out;
 }
 
 /********************/
@@ -554,11 +519,6 @@ h1 {
             hsl(calc(234 + var(--betaStart) * 2), 93%, 83%) 68.23%, 
             hsl(calc(148 + var(--betaStart) * 2), 91%, 67%) 87.5%, 
             hsl(calc(199 + var(--betaStart) * 2), 90%, 65%) 100%);       
-
-            animation-name: moveTicket;
-            animation-duration: 16s;
-            animation-iteration-count: infinite;
-            animation-timing-function: ease-out;                
 }
 
 .iridescent-light {
@@ -605,11 +565,6 @@ h1 {
     background-position: 50% 50%, 50% 50%;
 
     mix-blend-mode: soft-light;
-
-    animation-name: moveTicket;
-    animation-duration: 16s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-out;
 }
 
 
@@ -630,11 +585,6 @@ h1 {
         radial-gradient(ellipse 100% 100% at calc(100% - var(--x)) calc(100% - var(--y)), #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
         radial-gradient(ellipse 100% 100% at var(--x) var(--y), #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
     text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
-
-    animation-name: moveTicket;
-    animation-duration: 16s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-out;
 }
 
 .gold .progressbar {
@@ -657,11 +607,6 @@ h1 {
 .gold .spotlight {
     background: radial-gradient(circle at var(--x) var(--y), #000000 0%, #F8F6F0 100%);
     mix-blend-mode: overlay;
-
-    animation-name: moveTicket;
-    animation-duration: 16s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-out;
 
 }
 
