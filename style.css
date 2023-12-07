@@ -262,9 +262,10 @@ h1 {
 
 .ticket .ticketNumber {
     font-size: 3.4em;
-    -webkit-box-flex: 1;
-        -ms-flex-positive: 1;
-            flex-grow: 1;
+    flex-grow: 1;
+
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;        
 }
 
 .ticket img {
@@ -396,8 +397,6 @@ h1 {
 .no-gradient .ticketNumber {
     text-shadow: 0px 0px 0px rgba(0, 0, 0, .1);
     background:black;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .no-gradient .spotlight {
@@ -419,8 +418,10 @@ h1 {
     background:rgba(0,0,0, .2);
 }
 
+/*******************/
+/* Iridescent Dark */
+/*******************/
 
-/* Iridescent Dark*/
 .iridescent-dark {
     color:white;
     text-shadow: 0px 4px 0px rgba(0, 0, 0, 0.1);
@@ -448,8 +449,6 @@ h1 {
     text-shadow: 0;
     color:white;
     background: white;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .iridescent-dark .spotlight {
@@ -494,15 +493,16 @@ h1 {
 }
 
 .iridescent-dark .noise {
-    opacity: 0.5;
-    background-image: var(--glitter), radial-gradient(50% 50% at calc(100% - var(--x)) calc(100% - var(--y)), #FFFFFF 0%, #000000 100%);
-    background-size: 100% 100%, 200% 200%;
-    background-blend-mode: multiply, overlay;
-    background-position: 50% 50%, 50% 50%;
+    opacity: 1;
 
-    filter: brightness(2) contrast(1);
+    background-image: var(--glitter), var(--glitter), radial-gradient(50% 50% at calc(100% - var(--x)) calc(100% - var(--y)), #FFFFFF 0%, #000000 100%);
+    background-size: 100% 100%, 80% 80%, 200% 200%;
+    background-blend-mode: multiply, multiply, overlay;
+    background-position: 50% 50%, 50% 50%, 50% 50%;
 
-    mix-blend-mode: luminosity;
+    mix-blend-mode: color-dodge;
+
+    filter: brightness(2) contrast(0.8);
 
     animation-name: moveTicket;
     animation-duration: 16s;
@@ -510,7 +510,10 @@ h1 {
     animation-timing-function: ease-out;
 }
 
+/********************/
 /* Iridescent Light */
+/********************/
+
 .iridescent-light .shiny {
     background-blend-mode: screen, difference, normal;
     mix-blend-mode: normal;
@@ -592,8 +595,6 @@ h1 {
 
 .iridescent-light .ticketNumber {
     background: white;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .iridescent-light .noise {
@@ -612,8 +613,10 @@ h1 {
 }
 
 
-
+/********/
 /* Gold */
+/********/
+
 .gold {
     text-shadow: 0px 0px transparent;
     color:hsl(49, 98%, 18%);
@@ -627,10 +630,6 @@ h1 {
         radial-gradient(ellipse 100% 100% at calc(100% - var(--x)) calc(100% - var(--y)), #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
         radial-gradient(ellipse 100% 100% at var(--x) var(--y), #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
     text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
 
     animation-name: moveTicket;
     animation-duration: 16s;
