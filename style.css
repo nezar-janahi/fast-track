@@ -575,7 +575,7 @@ h1 {
 
 .gold {
     text-shadow: 0px 0px transparent;
-    color:hsl(49, 98%, 18%);
+    color:#5c4b00
 }
 .gold .border {
     opacity: 0;
