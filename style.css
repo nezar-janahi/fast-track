@@ -612,8 +612,10 @@ h1 {
 }
 
 .gold .noise {
-    background-image: var(--glitter), linear-gradient(#FDD835 0%, #FDD835 100%);
+    /*background-image: var(--glitter), linear-gradient(#FDD835 0%, #FDD835 100%);*/
+    background-image: linear-gradient(#FDD835 0%, #FDD835 100%);
     background-size: 100% 100%;
+    opacity: 0;
 
     mix-blend-mode: overlay;
 }
